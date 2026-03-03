@@ -399,4 +399,4 @@ def create_app() -> web.Application:
 
 
 if __name__ == "__main__":
-    web.run_app(create_app(), host="0.0.0.0", port=5000)
+    web.run_app(create_app(), host="localhost", port=3000)

@@ -131,5 +131,4 @@ def services():
 
 if __name__ == "__main__":
     init_db()
-    # Starts on 0.0.0.0:5000 as requested
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="localhost", port=3000)

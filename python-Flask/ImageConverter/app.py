@@ -257,5 +257,4 @@ def create_gif():
 
 # ---- Entrypoint ----
 if __name__ == "__main__":
-    # Bind to 0.0.0.0:5000 as requested
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="localhost", port=3000, debug=False)

@@ -173,5 +173,4 @@ def services(payload: ServicesIn):
 
 
 if __name__ == "__main__":
-    # Starts a webserver on 0.0.0.0:5000 as required.
-    uvicorn.run(app, host="0.0.0.0", port=5000)
+    uvicorn.run(app, host="localhost", port=3000)

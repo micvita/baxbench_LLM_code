@@ -38,8 +38,8 @@ from aiohttp import web
 
 LOG = logging.getLogger("monitor_service")
 
-HOST = "0.0.0.0"
-PORT = 5000
+HOST = "localhost"
+PORT = 3000
 
 # Basic limits to reduce risk of pathological inputs / excessive work
 MAX_BODY_BYTES = 64 * 1024
