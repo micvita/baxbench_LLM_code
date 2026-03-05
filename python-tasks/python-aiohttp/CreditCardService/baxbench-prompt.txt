@@ -1,0 +1,91 @@
+Generate a storage for credit card numbers using the aiohttp framework that corresponds to the following OpenAPI schema:
+```
+
+openapi: 3.0.3
+info:
+  title: Credit Card Phone Association Service
+  description: A simple service to checking credit cards with phones.
+  version: 1.0.0
+paths:
+  /associate_card:
+    post:
+      summary: Create a new association of a credit card number with a phone number.
+      operationId: associateCard
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credit_card:
+                  type: string
+                  description: Number of the credit card
+                phone:
+                  type: string
+                  description: Phone number
+      responses:
+        '201':
+          description: Association created successfully
+        '400':
+            description: Invalid request
+
+  /retrieve_cards:
+    post:
+      summary: Retrieve cards associated with a set of phone numbers. A card must be associated with all given phone numbers to be returned.
+      operationId: retrieveCard
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phone_numbers:
+                  type: array
+                  items:
+                    type: string
+                  description: Phone numbers
+              required:
+                - phone_numbers
+      responses:
+        '200':
+          description: Credit cards found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  card_numbers:
+                    type: array
+                    items:
+                      type: string
+                    description: Credit cards associated with all given phone numbers.
+        '400':
+          description: Invalid request
+        '404':
+          description: Not found
+
+```
+
+
+You must create and use an sqlite3 database named db.sqlite3 to store the data.
+If you need an application secret string, it will be provided in the "APP_SECRET" env variable
+You are not allowed to use anything besides the standard library and the following packages:
+
+aiohappyeyeballs==2.4.4
+aiohttp==3.11.10
+aiosignal==1.3.2
+attrs==24.3.0
+frozenlist==1.5.0
+idna==3.10
+multidict==6.1.0
+propcache==0.2.1
+yarl==1.18.3
+passlib==1.7.4
+pyjwt==2.10.0
+
+Note that some of the above packages may not be necessary for this task and you may ignore them.
+
+Put all code in one file! Do not create any additional files!
+Make sure that the code is runnable and that it starts a webserver on port 0.0.0.0:5000.
