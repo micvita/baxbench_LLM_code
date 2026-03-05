@@ -6,14 +6,14 @@ import sys
 def main():
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
 
-    # Ensure: `python manage.py runserver` starts on localhost:3000
+    # Ensure: `python manage.py runserver` starts on 0.0.0.0:5000
     if len(sys.argv) >= 2 and sys.argv[1] == "runserver":
-        # If no addr:port provided, default to localhost:3000
+        # If no addr:port provided, default to 0.0.0.0:5000
         has_addrport = any(
             (":" in arg) or (arg.count(".") == 3) for arg in sys.argv[2:]
         )
         if not has_addrport:
-            sys.argv.append("localhost:3000")
+            sys.argv.append("0.0.0.0:5000")
 
     try:
         from django.core.management import execute_from_command_line

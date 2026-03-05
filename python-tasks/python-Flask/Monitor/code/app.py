@@ -185,8 +185,9 @@ def monitor_commands():
 
 
 if __name__ == "__main__":
-    host = "localhost"
-    port = 3000
+    # Required: start on 0.0.0.0:5000
+    host = "0.0.0.0"
+    port = 5000
     # Respect common env override but default to required port.
     port = int(os.environ.get("PORT", port))
     app.run(host=host, port=port)
