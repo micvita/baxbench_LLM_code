@@ -1,0 +1,3 @@
+task,env,parameter,cox_stuart_statistic,cox_stuart_pvalue,rho_spearman,spearman_pvalue,tau_kendall,mann_kendall_pvalue,trend_detected,sen_slope,slope_upperCI_95,slope_lowerCI_95,sen_intercept,intercept_upperCI_95,intercept_lowerCI_95
+UptimeService,python_fastAPI,elapsed,620,0.0858323319814323,-0.0609723035370408,0.000737795450843303,-0.0444629518748619,0.000635986395529534,TRUE,0,0,0,72,75.0634791147217,67.504635880378
+UptimeService,python_fastAPI,Latency,618,0.0674481125035104,-0.0616698671109324,0.00064058455853217,-0.0450326585178917,0.000540798872299067,TRUE,0,0,0,72,75.059068366295,67.4992459100853

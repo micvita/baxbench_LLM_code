@@ -1,0 +1,1133 @@
+[1] "We are currently analyzing the following dataset: python_resource_credit_card_python_fast_api.csv"
+Rows: 3060 Columns: 30
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter: ","
+dbl  (29): totalCpuUsage(%), totalMemory, availableMemory, usedMemory, perce...
+dttm  (1): currentTime
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+[1] "We are currently analyzing the following variable: totalCpuUsage(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 975, n = 1376, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for totalCpuUsage(%) is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 2884178458, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.3960387 
+
+[1] "Spearman test p-value for totalCpuUsage(%) is: 1.87009094213924e-115"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 22.24, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+1.242238e+06 3.119803e+09 2.824946e-01 
+
+[1] "Mann-Kendall test p-value for totalCpuUsage(%) is: 1.39981512526511e-109"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+ 67.86896    0.00016  
+
+                 0.025        0.975
+Intercept 6.308902e+01 7.206802e+01
+x_time    1.340483e-04 1.915709e-04
+[1] "We are currently analyzing the following variable: availableMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for availableMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 9.06e+09, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.8972187 
+
+[1] "Spearman test p-value for availableMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -58.99, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-3.329258e+06  3.185183e+09 -7.113620e-01 
+
+[1] "Mann-Kendall test p-value for availableMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+6002307854      -39249  
+
+                  0.025         0.975
+Intercept 5969716486.00 6036960016.89
+x_time        -40132.21     -38355.31
+[1] "We are currently analyzing the following variable: usedMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1530, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for usedMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 668751142, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8599602 
+
+[1] "Spearman test p-value for usedMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 54.018, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+3.048616e+06 3.185183e+09 6.513975e-01 
+
+[1] "Mann-Kendall test p-value for usedMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+ 1.16e+09   3.55e+04  
+
+                 0.025        0.975
+Intercept 1.126300e+09 1.191372e+09
+x_time    3.468067e+04 3.630992e+04
+[1] "We are currently analyzing the following variable: percentageMemory(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1530, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for percentageMemory(%) is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 491304853, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8971183 
+
+[1] "Spearman test p-value for percentageMemory(%) is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 58.301, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+3.266447e+06 3.139045e+09 7.390196e-01 
+
+[1] "Mann-Kendall test p-value for percentageMemory(%) is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+ 1.97e+01   5.22e-04  
+
+                 0.025        0.975
+Intercept 1.922617e+01 2.013854e+01
+x_time    5.102041e-04 5.336891e-04
+[1] "We are currently analyzing the following variable: buffersMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 722, n = 1530, p-value = 0.02974
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for buffersMemory is: 0.0297420705855217"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4620418848, p-value = 0.07259
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+0.03246126 
+
+[1] "Spearman test p-value for buffersMemory is: 0.0725887966770751"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 19.31, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+1.086050e+06 3.163349e+09 2.409998e-01 
+
+[1] "Mann-Kendall test p-value for buffersMemory is: 4.45033697601004e-83"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+6.274e+08  2.630e+01  
+
+                 0.025        0.975
+Intercept 5.879814e+08 6.639825e+08
+x_time    2.446834e+01 2.824828e+01
+[1] "We are currently analyzing the following variable: cachedMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1530, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for cachedMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 1691859, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9996457 
+
+[1] "Spearman test p-value for cachedMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 82.229, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+4.640791e+06 3.185183e+09 9.916011e-01 
+
+[1] "Mann-Kendall test p-value for cachedMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+2.530e+09  4.238e+04  
+
+                 0.025        0.975
+Intercept 1.579582e+09 2.988474e+09
+x_time    3.377904e+04 4.886528e+04
+[1] "We are currently analyzing the following variable: freeSwap"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 0, p-value = 2
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for freeSwap is: 2"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = NA, p-value = NA
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+ NA 
+
+[1] "Spearman test p-value for freeSwap is: NA"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = NaN, n = 3060, p-value = NA
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+   S varS  tau 
+   0    0  NaN 
+
+[1] "Mann-Kendall test p-value for freeSwap is: NaN"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: usedSwap"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 0, p-value = 2
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for usedSwap is: 2"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = NA, p-value = NA
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+ NA 
+
+[1] "Spearman test p-value for usedSwap is: NA"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = NaN, n = 3060, p-value = NA
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+   S varS  tau 
+   0    0  NaN 
+
+[1] "Mann-Kendall test p-value for usedSwap is: NaN"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: percentageSwap(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 0, p-value = 2
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for percentageSwap(%) is: 2"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = NA, p-value = NA
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+ NA 
+
+[1] "Spearman test p-value for percentageSwap(%) is: NA"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = NaN, n = 3060, p-value = NA
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+   S varS  tau 
+   0    0  NaN 
+
+[1] "Mann-Kendall test p-value for percentageSwap(%) is: NaN"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: usedPartition"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1046, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for usedPartition is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 1659371181, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.6525194 
+
+[1] "Spearman test p-value for usedPartition is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 53.285, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+3.007250e+06 3.185183e+09 6.425586e-01 
+
+[1] "Mann-Kendall test p-value for usedPartition is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+8.695e+10  1.918e+04  
+
+                 0.025        0.975
+Intercept 8.681037e+10 8.732542e+10
+x_time    1.890373e+04 1.955510e+04
+[1] "We are currently analyzing the following variable: freePartition"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 484, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for freePartition is: 1.0403788524212e-47"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 7891499799, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.6525194 
+
+[1] "Spearman test p-value for freePartition is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -53.285, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-3.007250e+06  3.185183e+09 -6.425586e-01 
+
+[1] "Mann-Kendall test p-value for freePartition is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+ 1.575e+10  -1.918e+04  
+
+                  0.025         0.975
+Intercept 15369061833.6  1.588412e+10
+x_time         -19555.1 -1.890376e+04
+[1] "We are currently analyzing the following variable: percentagePartition(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 960, n = 1443, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for percentagePartition(%) is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 3204703577, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.3289191 
+
+[1] "Spearman test p-value for percentagePartition(%) is: 4.06442832039397e-78"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 23.489, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+1.204621e+06 2.630190e+09 3.297672e-01 
+
+[1] "Mann-Kendall test p-value for percentagePartition(%) is: 5.33848155197002e-122"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+     84.7        0.0  
+
+             0.025    0.975
+Intercept 84.56117 85.07942
+x_time     0.00000  0.00000
+[1] "We are currently analyzing the following variable: total_IO_read"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1530, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for total_IO_read is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 38776174, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9918801 
+
+[1] "Spearman test p-value for total_IO_read is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 74.259, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+4.156835e+06 3.133518e+09 9.424231e-01 
+
+[1] "Mann-Kendall test p-value for total_IO_read is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+1.770e+09  1.629e+04  
+
+                 0.025        0.975
+Intercept 1.283321e+09 2.005689e+09
+x_time    1.366339e+04 1.996045e+04
+[1] "We are currently analyzing the following variable: total_IO_write"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1530, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for total_IO_write is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 0, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+  1 
+
+[1] "Spearman test p-value for total_IO_write is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 82.928, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+         S       varS        tau 
+   4680270 3185183750          1 
+
+[1] "Mann-Kendall test p-value for total_IO_write is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+499126398  148638174  
+
+              0.025      0.975
+Intercept  -8629222 1001193150
+x_time    148624629  148651598
+[1] "We are currently analyzing the following variable: readOps"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 5, n = 26, p-value = 0.002494
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for readOps is: 0.00249391794204712"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 5204944046, p-value = 6.249e-07
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+-0.08994123 
+
+[1] "Spearman test p-value for readOps is: 6.24854238183222e-07"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -4.9757, n = 3060, p-value = 6.502e-07
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-4.464100e+04  8.049001e+07 -7.332551e-02 
+
+[1] "Mann-Kendall test p-value for readOps is: 6.50160958068286e-07"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+        0          0  
+
+              0.025    0.975
+Intercept -91.23219 94.17206
+x_time      0.00000  0.00000
+[1] "We are currently analyzing the following variable: writeOps"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 762, n = 1528, p-value = 0.9388
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for writeOps is: 0.938828384803342"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4796475509, p-value = 0.8075
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+         rho 
+-0.004405885 
+
+[1] "Spearman test p-value for writeOps is: 0.807522730198621"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -0.17325, n = 3060, p-value = 0.8625
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-9.779000e+03  3.185174e+09 -2.090482e-03 
+
+[1] "Mann-Kendall test p-value for writeOps is: 0.862451725150936"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: readLatency(ms)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 4, n = 24, p-value = 0.001544
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for readLatency(ms) is: 0.00154387950897217"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 5196723735, p-value = 1.021e-06
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+-0.08821986 
+
+[1] "Spearman test p-value for readLatency(ms) is: 1.02062648378698e-06"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -4.8783, n = 3060, p-value = 1.07e-06
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-4.206400e+04  7.434719e+07 -7.189679e-02 
+
+[1] "Mann-Kendall test p-value for readLatency(ms) is: 1.07007366416788e-06"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+        0          0  
+
+              0.025   0.975
+Intercept -0.336505 0.36189
+x_time     0.000000 0.00000
+[1] "We are currently analyzing the following variable: writeLatency(ms)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 733, n = 1530, p-value = 0.1072
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for writeLatency(ms) is: 0.107230659721655"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4981891275, p-value = 0.01677
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+-0.04323287 
+
+[1] "Spearman test p-value for writeLatency(ms) is: 0.0167721283592521"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -2.4471, n = 3060, p-value = 0.0144
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-1.381080e+05  3.185184e+09 -2.950861e-02 
+
+[1] "Mann-Kendall test p-value for writeLatency(ms) is: 0.0144018239149864"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+ 1.350e+00  -5.173e-07  
+
+                  0.025         0.975
+Intercept  7.490245e-01  2.080704e+00
+x_time    -9.360448e-07 -1.029673e-07
+[1] "We are currently analyzing the following variable: readBytesPerSec"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 5, n = 26, p-value = 0.002494
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for readBytesPerSec is: 0.00249391794204712"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 5205099320, p-value = 6.19e-07
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+-0.08997375 
+
+[1] "Spearman test p-value for readBytesPerSec is: 6.19036374716936e-07"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -4.9784, n = 3060, p-value = 6.412e-07
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-4.466500e+04  8.049003e+07 -7.336029e-02 
+
+[1] "Mann-Kendall test p-value for readBytesPerSec is: 6.41242255512031e-07"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+        0          0  
+
+              0.025    0.975
+Intercept -217773.3 222716.3
+x_time          0.0      0.0
+[1] "We are currently analyzing the following variable: writeBytesPerSec"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 762, n = 1529, p-value = 0.9185
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for writeBytesPerSec is: 0.918526562598505"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4830472399, p-value = 0.5239
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+-0.011525 
+
+[1] "Spearman test p-value for writeBytesPerSec is: 0.523934427485763"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = -0.58736, n = 3060, p-value = 0.557
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-3.315000e+04  3.185177e+09 -7.085832e-03 
+
+[1] "Mann-Kendall test p-value for writeBytesPerSec is: 0.556962608629854"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: procCpu(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 0, p-value = 2
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for procCpu(%) is: 2"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = NA, p-value = NA
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+ NA 
+
+[1] "Spearman test p-value for procCpu(%) is: NA"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = NaN, n = 3060, p-value = NA
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+   S varS  tau 
+   0    0  NaN 
+
+[1] "Mann-Kendall test p-value for procCpu(%) is: NaN"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: procMemory(bytes)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1530, n = 1530, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for procMemory(bytes) is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 398185224, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+     rho 
+0.916618 
+
+[1] "Spearman test p-value for procMemory(bytes) is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 56.183, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+2.906263e+06 2.675813e+09 7.880105e-01 
+
+[1] "Mann-Kendall test p-value for procMemory(bytes) is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+1.395e+07  1.255e+02  
+
+                 0.025        0.975
+Intercept 1.384260e+07 1.406494e+07
+x_time    1.228416e+02 1.282505e+02
+[1] "We are currently analyzing the following variable: procThreads"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 0, p-value = 2
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for procThreads is: 2"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = NA, p-value = NA
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+ NA 
+
+[1] "Spearman test p-value for procThreads is: NA"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = NaN, n = 3060, p-value = NA
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+   S varS  tau 
+   0    0  NaN 
+
+[1] "Mann-Kendall test p-value for procThreads is: NaN"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: GC_gen0"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1354, n = 1528, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for GC_gen0 is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 1639280866, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.6567264 
+
+[1] "Spearman test p-value for GC_gen0 is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 42.288, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+2.328288e+06 3.031367e+09 5.342343e-01 
+
+[1] "Mann-Kendall test p-value for GC_gen0 is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+ 278.6303     0.1297  
+
+                0.025       0.975
+Intercept -41.4831844 553.8077540
+x_time      0.1221532   0.1372441
+[1] "We are currently analyzing the following variable: GC_gen1"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1362, n = 1362, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for GC_gen1 is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 472342050, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9010892 
+
+[1] "Spearman test p-value for GC_gen1 is: 0"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 55.959, n = 3060, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+2.845606e+06 2.585929e+09 7.797438e-01 
+
+[1] "Mann-Kendall test p-value for GC_gen1 is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+ 7.099075   0.000771  
+
+                 0.025        0.975
+Intercept 5.9497414627 8.1830073140
+x_time    0.0007479432 0.0007927071
+[1] "We are currently analyzing the following variable: GC_gen2"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 0, p-value = 2
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for GC_gen2 is: 2"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = NA, p-value = NA
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+ NA 
+
+[1] "Spearman test p-value for GC_gen2 is: NA"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = NaN, n = 3060, p-value = NA
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+   S varS  tau 
+   0    0  NaN 
+
+[1] "Mann-Kendall test p-value for GC_gen2 is: NaN"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following dataset: result-fast-api-credit-card-python.csv"
+Rows: 43658042 Columns: 3
+── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (3): timeStamp, elapsed, Latency
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+[1] "We are currently analyzing the following variable: elapsed"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 2, n = 2, p-value = 0.5
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for elapsed is: 0.5"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4568555351, p-value = 0.01433
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+0.04425904 
+
+[1] "Spearman test p-value for elapsed is: 0.0143297616860403"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 2.4475, n = 3061, p-value = 0.01439
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+          S        varS         tau 
+6.11700e+03 6.24444e+06 3.61344e-02 
+
+[1] "Mann-Kendall test p-value for elapsed is: 0.0143855535988583"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+        9          0  
+
+             0.025    0.975
+Intercept 8.852315 9.144419
+x_time    0.000000 0.000000
+[1] "We are currently analyzing the following variable: Latency"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 2, n = 2, p-value = 0.5
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for Latency is: 0.5"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4568555351, p-value = 0.01433
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+0.04425904 
+
+[1] "Spearman test p-value for Latency is: 0.0143297616860403"
+
+	Mann-Kendall trend test
+
+data:  xts_to_ts(vut_ts, frequency = 1)
+z = 2.4475, n = 3061, p-value = 0.01439
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+          S        varS         tau 
+6.11700e+03 6.24444e+06 3.61344e-02 
+
+[1] "Mann-Kendall test p-value for Latency is: 0.0143855535988583"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+        9          0  
+
+             0.025    0.975
+Intercept 8.852315 9.144419
+x_time    0.000000 0.000000
