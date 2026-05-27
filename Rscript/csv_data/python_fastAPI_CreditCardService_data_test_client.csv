@@ -1,3 +1,0 @@
-task,env,parameter,cox_stuart_statistic,cox_stuart_pvalue,rho_spearman,spearman_pvalue,tau_kendall,mann_kendall_pvalue,trend_detected,sen_slope,slope_upperCI_95,slope_lowerCI_95,sen_intercept,intercept_upperCI_95,intercept_lowerCI_95
-CreditCardService,python_fastAPI,elapsed,2,0.5,0.0442590398017485,0.0143297616860403,0.0361344021547146,0.0143855535988583,TRUE,0,0,0,9,9.14441854064081,8.8523145531194
-CreditCardService,python_fastAPI,Latency,2,0.5,0.0442590398017485,0.0143297616860403,0.0361344021547146,0.0143855535988583,TRUE,0,0,0,9,9.14441854064081,8.8523145531194

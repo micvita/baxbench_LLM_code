@@ -1,0 +1,3 @@
+task,env,parameter,cox_stuart_statistic,cox_stuart_pvalue,rho_spearman,spearman_pvalue,tau_kendall,mann_kendall_pvalue,mann_kendall_HR_corrected,trend_detected,sen_slope,slope_upperCI_95,slope_lowerCI_95,sen_intercept,intercept_upperCI_95,intercept_lowerCI_95
+monitor,python_django,elapsed,15,0.307456254959107,0.00131028843705388,0.964061427656911,0.00104265809927385,0.965153980443684,0.985513351245459,FALSE,NA,NA,NA,NA,NA,NA
+monitor,python_django,Latency,15,0.307456254959107,0.00131028843705388,0.964061427656911,0.00104265809927385,0.965153980443684,0.985513351245459,FALSE,NA,NA,NA,NA,NA,NA

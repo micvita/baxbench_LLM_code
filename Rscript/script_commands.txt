@@ -1,0 +1,7 @@
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_monitor_python_aiohttp.csv" "Rscript/raw_csv_data/response-time-monitor-python-aiohttp.csv" "monitor" "python_aiohttp"')
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_monitor_python_django.csv" "Rscript/raw_csv_data/response-time-monitor-python-django.csv" "monitor" "python_django"')
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_monitor_python_fast_api.csv" "Rscript/raw_csv_data/response-time-monitor-python-fast-api.csv" "monitor" "python_fast_api"')
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_uptime_python_django.csv" "Rscript/raw_csv_data/response-time-uptime-python-django.csv" "uptime" "python_django"')
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_uptime_python_fast_api.csv" "Rscript/raw_csv_data/response-time-uptime-fastapi.csv" "uptime" "python_fast_api"')
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_credit_card_python_django.csv" "Rscript/raw_csv_data/response-time-django-credit-card-python.csv" "credit_card" "python_django"')
+system('Rscript "Rscript/SW_Aging_Trend_Analysis_script.R" "Rscript/raw_csv_data/python_resource_credit_card_python_fast_api.csv" "Rscript/raw_csv_data/result-fast-api-credit-card-python.csv" "credit_card" "python_fast_api"')
