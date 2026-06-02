@@ -1,3 +1,3 @@
 task,env,parameter,cox_stuart_statistic,cox_stuart_pvalue,rho_spearman,spearman_pvalue,tau_kendall,mann_kendall_pvalue,mann_kendall_HR_corrected,trend_detected,sen_slope,slope_upperCI_95,slope_lowerCI_95,sen_intercept,intercept_upperCI_95,intercept_lowerCI_95
-credit_card,python_fast_api,elapsed,2,0.5,0.0442590398017485,0.0143297616860403,0.0361344021547146,0.0143855535988583,0.0834409573090844,FALSE,NA,NA,NA,NA,NA,NA
-credit_card,python_fast_api,Latency,2,0.5,0.0442590398017485,0.0143297616860403,0.0361344021547146,0.0143855535988583,0.0834409573090844,FALSE,NA,NA,NA,NA,NA,NA
+credit_card,python_fast_api,elapsed,2,0.5,0.044259039801748536,0.01432976168604027,0.036134402154714605,0.014385553598858292,0.08344095730908437,FALSE,NA,NA,NA,NA,NA,NA
+credit_card,python_fast_api,Latency,2,0.5,0.044259039801748536,0.01432976168604027,0.036134402154714605,0.014385553598858292,0.08344095730908437,FALSE,NA,NA,NA,NA,NA,NA

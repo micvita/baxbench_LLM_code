@@ -8,6 +8,7 @@ library(zoo)
 library(highfrequency)
 library(TSstudio)
 library(modifiedmk)
+library(sjmisc)
 
 
 #TREND ANALYSIS FUNCTION
@@ -25,13 +26,16 @@ library(modifiedmk)
 #tz:            timezone used in the aggregate function. Needed for timestamp UNIX conversion.
 ##################################################################
 
-trend_analysis <- function(exclude_list = c(1), csv_path, task_name, env_name, aggregate = FALSE, dt_position = 1,
+trend_analysis <- function(exclude_list = c(1), csv_path, task_name, env_name, row_cutoff, aggregate = FALSE, dt_position = 1,
                             aggr_FUN = "median", aggr_align = "minutes", aggr_period = 1, plot_dir, tz = "America/Sao_Paulo") {
   
   print(paste("We are currently analyzing the following dataset:", basename(csv_path)))                            
 
   #1. Read the data from the csv file using read_csv from the readr package.
-  datain <- read_csv(csv_path)
+  datain <- read_csv(csv_path, show_col_types = FALSE)
+
+  #Cutoff
+  datain <- datain[1:row_cutoff, ]
 
   #Rows parsed incorrectly are logged
   parse_issues <- problems(datain)
@@ -41,7 +45,7 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name, env_name, a
     print(parse_issues)
     if(aggregate) {
       #malformed rows are usally in client csv
-      datain <- datain[stats::complete.cases(datain), ]
+      datain <- datain[complete.cases(datain), ]
     }
   } else {
     print(paste("No parsing problems found in:", basename(csv_path)))
@@ -170,11 +174,24 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name, env_name, a
       plot_fun(trend_sig, sslope, ci_slope, vut, date, x_time, datain, col, plot_dir)
 
       #printing pvalues of all tests in the output dataframe
-      dataout[nrow(dataout) + 1, ] = c(
-        task_name, env_name, colnames(datain)[col],
-        cs_res$statistic, cs_res$p.value, sr_res$estimate, sr_res$p.value,
-        mk_res$estimates[3], mk_res$p.value, mk_mod_pvalue, trend_sig,
-        slope, slope_uci, slope_lci, intercept, intercept_uci, intercept_lci
+      dataout[nrow(dataout) + 1, ] <- data.frame(
+        task = task_name,
+        env = env_name,
+        parameter = colnames(datain)[col],
+        cox_stuart_statistic = as.numeric(cs_res$statistic),
+        cox_stuart_pvalue = as.numeric(cs_res$p.value),
+        rho_spearman = as.numeric(sr_res$estimate),
+        spearman_pvalue = as.numeric(sr_res$p.value),
+        tau_kendall = as.numeric(mk_res$estimates[3]),
+        mann_kendall_pvalue = as.numeric(mk_res$p.value),
+        mann_kendall_HR_corrected = as.numeric(mk_mod_pvalue),
+        trend_detected = as.logical(trend_sig),
+        sen_slope = as.numeric(slope),
+        slope_upperCI_95 = as.numeric(slope_uci),
+        slope_lowerCI_95 = as.numeric(slope_lci),
+        sen_intercept = as.numeric(intercept),
+        intercept_upperCI_95 = as.numeric(intercept_uci),
+        intercept_lowerCI_95 = as.numeric(intercept_lci)
       )
 
     } else {
@@ -182,12 +199,24 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name, env_name, a
       print("NO Trend DETECTED!")
 
       #Add row with no values for theil sen estimator because there was no significant trend
-      dataout[nrow(dataout) + 1, ] = c(task_name, env_name,
-        colnames(datain)[col], cs_res$statistic,
-        cs_res$p.value, sr_res$estimate,
-        sr_res$p.value, mk_res$estimates[3],
-        mk_res$p.value, mk_mod_pvalue, trend_sig,
-        NA_real_, NA_real_, NA_real_, NA_real_, NA_real_, NA_real_
+      dataout[nrow(dataout) + 1, ] <- data.frame(
+        task = task_name,
+        env = env_name,
+        parameter = colnames(datain)[col],
+        cox_stuart_statistic = as.numeric(cs_res$statistic),
+        cox_stuart_pvalue = as.numeric(cs_res$p.value),
+        rho_spearman = as.numeric(sr_res$estimate),
+        spearman_pvalue = as.numeric(sr_res$p.value),
+        tau_kendall = as.numeric(mk_res$estimates[3]),
+        mann_kendall_pvalue = as.numeric(mk_res$p.value),
+        mann_kendall_HR_corrected = as.numeric(mk_mod_pvalue),
+        trend_detected = as.logical(trend_sig),
+        sen_slope = NA_real_,
+        slope_upperCI_95 = NA_real_,
+        slope_lowerCI_95 = NA_real_,
+        sen_intercept = NA_real_,
+        intercept_upperCI_95 = NA_real_,
+        intercept_lowerCI_95 = NA_real_
       )
 
        plot_fun(trend_sig = trend_sig, vut = vut, date = date, x_time = x_time, datain = datain, col = col, output_dir = plot_dir)
@@ -334,10 +363,57 @@ plot_fun <- function(trend_sig, sslope, ci_slope, vut, date, x_time, datain, col
 # The other arguments are discussed in Trend Analysis Function.
 #################################################################
 
-aggregate_fun <- function(vut, timestamp, FUN, align, period, tz, UNIX_ms_convert = 1000) {
+aggregate_fun <- function(vut, timestamp, FUN, align, period, tz) {
+  UNIX_ms_convert <- 1000
   ts_xts          <- xts(vut, as.POSIXct(as.numeric(timestamp)/UNIX_ms_convert, origin = "1970-01-01", tz = tz))
   ts_xts_agg      <- aggregateTS(ts_xts, FUN = FUN, alignBy = align, alignPeriod = period, tz = tz)
   return (ts_xts_agg)
+}
+
+#ROW CUTOFF FUNCTION
+cutoff_row_fun <- function(cl_csv_path, sv_csv_path, exp_duration = 51, tz = "America/Sao_Paulo") {
+
+  UNIX_ms_convert <- 1000
+
+  cl_datain <- read_csv(cl_csv_path, show_col_types = FALSE)
+  sv_datain <- read_csv(sv_csv_path, show_col_types = FALSE)
+
+  cl_start_timestamp <- as.POSIXct(as.numeric(cl_datain[[1]][1]) / UNIX_ms_convert, origin = "1970-01-01", tz = tz)
+  cl_end_timestamp <- as.POSIXct(as.numeric(cl_datain[[1]][nrow(cl_datain)]) / UNIX_ms_convert, origin = "1970-01-01", tz = tz)
+
+  sv_start_timestamp <- as.POSIXct(sv_datain[[1]][1], tz = tz)
+  sv_end_timestamp <- as.POSIXct(sv_datain[[1]][nrow(sv_datain)], tz = tz)
+
+  cl_dur_hours <- as.numeric(difftime(cl_end_timestamp, cl_start_timestamp, units = "hours"))
+  sv_dur_hours <- as.numeric(difftime(sv_end_timestamp, sv_start_timestamp, units = "hours"))
+
+  #Default experiment duration is 51 hours.
+  #If either the client or server CSV is shorter, use the shortest duration
+  #as the cutoff to keep both datasets temporally consistent.
+  target_hours <- min(cl_dur_hours, sv_dur_hours, exp_duration)
+
+  #cl_cutoff_ms is the cutoff timestamp in UNIX ms
+  cl_start_ms <- as.numeric(cl_datain[[1]][1])
+  cl_cutoff_ms <- cl_start_ms + target_hours * 60 * 60 * 1000
+
+  #here we select the row inside the dataset that is equal to cl_cutoff_ms
+  #and we store the index inside cl_row_cutoff
+  cl_row_cutoff <- max(which(as.numeric(cl_datain[[1]]) <= cl_cutoff_ms))
+
+  sv_cutoff_timestamp <- sv_start_timestamp + target_hours * 60 * 60
+
+  sv_timestamps <- as.POSIXct(sv_datain[[1]], tz = tz)
+  sv_row_cutoff <- max(which(sv_timestamps <= sv_cutoff_timestamp))
+
+  result <- data.frame(
+    target_hours = target_hours,
+    cl_duration_hours = cl_dur_hours,
+    sv_duration_hours = sv_dur_hours,
+    cl_row_cutoff = cl_row_cutoff,
+    sv_row_cutoff = sv_row_cutoff
+  )
+
+  return (result)
 }
 
 #MAIN
@@ -356,12 +432,12 @@ main <- function(...) {
     plot_dir   = file.path(getwd(), "Rscript/plots"),
     exclude_server_cols = c(1),                   #columns of the csv file to exclude from the analysis
     exclude_client_cols = c(1),
-    tz = "America/Sao_Paulo"                      #timeZone for timestamp conversion
+    tz = "America/Sao_Paulo"                     #timeZone for timestamp conversion
   )
 
   args <- commandArgs(trailingOnly = TRUE)
 
-  if (length(args) < 4 || length(args) > 4) {
+  if (length(args) < 2 || length(args) > 4) {
     stop("Check args! The cmd should be in the following format: Rscript script.R <server_csv> <client_csv> <task_name> <env_name>")
   }
 
@@ -388,35 +464,45 @@ main <- function(...) {
   # when the main closes correctly or with an error state we close all files (even the log)
   on.exit(closeAllConnections(), add = TRUE)
 
-  dataout_server <- trend_analysis(
-    exclude_list = config$exclude_server_cols,
-    csv_path = server_csv,
-    task_name = task_name,
-    env_name = env_name,
-    tz = config$tz,
-    plot_dir = path_plots
-  )
+  row_cutoff_res <- cutoff_row_fun(client_csv, server_csv, tz = config$tz)
 
-  dataout_client <- trend_analysis(
-    exclude_list = config$exclude_client_cols,
-    csv_path = client_csv,
-    task_name = task_name,
-    env_name = env_name,
-    aggregate = TRUE,
-    tz = config$tz,
-    plot_dir = path_plots
-  )
+  #select empty string in input if you do not want to analyze a server csv
+  if (!(is_empty(server_csv))) {
 
-  readr::write_csv(
-    dataout_server,
-    file.path(config$output_dir, paste(env_name, task_name, "data_test_server.csv", sep = "_"))
-  )
+    dataout_server <- trend_analysis(
+      exclude_list = config$exclude_server_cols,
+      csv_path = server_csv,
+      task_name = task_name,
+      env_name = env_name,
+      row_cutoff = row_cutoff_res$sv_row_cutoff,
+      tz = config$tz,
+      plot_dir = path_plots
+    )
 
-  readr::write_csv(
-    dataout_client,
-    file.path(config$output_dir, paste(env_name, task_name, "data_test_client.csv", sep = "_"))
+    write_csv(
+      dataout_server,
+      file.path(config$output_dir, paste(env_name, task_name, "data_test_server.csv", sep = "_"))
   )
+  }
 
+  if (!(is_empty(client_csv))) {
+
+    dataout_client <- trend_analysis(
+      exclude_list = config$exclude_client_cols,
+      csv_path = client_csv,
+      task_name = task_name,
+      env_name = env_name,
+      row_cutoff = row_cutoff_res$cl_row_cutoff,
+      aggregate = TRUE,
+      tz = config$tz,
+      plot_dir = path_plots
+    )
+
+    write_csv(
+      dataout_client,
+      file.path(config$output_dir, paste(env_name, task_name, "data_test_client.csv", sep = "_"))
+  )
+  }
 }
 
 main()
