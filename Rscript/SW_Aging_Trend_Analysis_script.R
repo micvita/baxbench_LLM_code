@@ -121,7 +121,11 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
 
   # 1. Read CSV, row cuttoff for coherence and parsing issues
   datain <- readr::read_csv(csv_path, show_col_types = FALSE)
-  datain <- datain[1:row_cutoff, ]
+  if (is.na(row_cutoff)){
+    stop("NO VALID CUTOFF FOR CSV!")
+  } else {
+    datain <- datain[1:row_cutoff, ]
+  }
 
   parse_issues <- problems(datain)
   if (nrow(parse_issues) > 0) {
@@ -384,6 +388,18 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
                output_dir = plot_dir)
     }
   }
+
+  # TESTING NOT DEFINITIVE
+  # Multiple testing check using Benjamini-Hochberg correction.
+
+  dataout$cox_stuart_pvalue_BH <- p.adjust(dataout$cox_stuart_pvalue, method = "BH")
+  dataout$spearman_pvalue_BH <- p.adjust(dataout$spearman_pvalue, method = "BH")
+  dataout$mann_kendall_pvalue_BH <- p.adjust(dataout$mann_kendall_pvalue, method = "BH")
+  dataout$mann_kendall_HR_corrected_BH <- p.adjust(dataout$mann_kendall_HR_corrected, method = "BH")
+  dataout$mann_kendall_YW_corrected_BH <- p.adjust(dataout$mann_kendall_YW_corrected, method = "BH")
+  dataout$mann_kendall_PW_von_storch_BH <- p.adjust(dataout$mann_kendall_PW_von_storch, method = "BH")
+  dataout$mann_kendall_TFPW_yue_BH <- p.adjust(dataout$mann_kendall_TFPW_yue,  method = "BH")
+
   return(dataout)
 }
 
@@ -587,48 +603,71 @@ cutoff_row_fun <- function(cl_csv_path, sv_csv_path, exp_duration = 51,
   # TODO: make it a parameter
   UNIX_ms_convert <- 1000
 
-  cl_datain <- read_csv(cl_csv_path, show_col_types = FALSE)
-  sv_datain <- read_csv(sv_csv_path, show_col_types = FALSE)
+  sv_ok <- FALSE
+  cl_ok <- FALSE
+  sv_dur_hours <- NA
+  cl_dur_hours <- NA
+  sv_row_cutoff <- NA
+  cl_row_cutoff <- NA
 
-  # Client timestamp computations
-  cl_start_timestamp <- as.POSIXct(as.numeric(cl_datain[[1]][1]) /
+  if (!is_empty(cl_csv_path) && !is.na(cl_csv_path)) {
+    cl_ok <- TRUE
+    cl_datain <- read_csv(cl_csv_path, show_col_types = FALSE)
+
+    # Client timestamp computations
+    cl_start_timestamp <- as.POSIXct(as.numeric(cl_datain[[1]][1]) /
+                                       UNIX_ms_convert, origin = "1970-01-01",
+                                     tz = tz)
+    cl_end_timestamp <- as.POSIXct(as.numeric(cl_datain[[1]][nrow(cl_datain)]) /
                                      UNIX_ms_convert, origin = "1970-01-01",
                                    tz = tz)
-  cl_end_timestamp <- as.POSIXct(as.numeric(cl_datain[[1]][nrow(cl_datain)]) /
-                                   UNIX_ms_convert, origin = "1970-01-01",
-                                 tz = tz)
-  cl_dur_hours <- as.numeric(difftime(cl_end_timestamp, cl_start_timestamp,
-                                      units = "hours"))
-  # Server timestamp computations
-  sv_start_timestamp <- as.POSIXct(sv_datain[[1]][1], tz = tz)
-  sv_end_timestamp <- as.POSIXct(sv_datain[[1]][nrow(sv_datain)], tz = tz)
-  sv_dur_hours <- as.numeric(difftime(sv_end_timestamp, sv_start_timestamp,
-                                      units = "hours"))
+    cl_dur_hours <- as.numeric(difftime(cl_end_timestamp, cl_start_timestamp,
+                                        units = "hours"))
+  }
+
+  if (!is_empty(sv_csv_path) && !is.na(sv_csv_path)) {
+    sv_ok <- TRUE
+    sv_datain <- read_csv(sv_csv_path, show_col_types = FALSE)
+
+    # Server timestamp computations
+    sv_start_timestamp <- as.POSIXct(sv_datain[[1]][1], tz = tz)
+    sv_end_timestamp <- as.POSIXct(sv_datain[[1]][nrow(sv_datain)], tz = tz)
+    sv_dur_hours <- as.numeric(difftime(sv_end_timestamp, sv_start_timestamp,
+                                        units = "hours"))
+  }
+
+  if (!sv_ok && !cl_ok) {
+    stop("NO Valid CSV files!")
+  }
 
   # Default experiment duration is 51 hours.
   # If either the client or server CSV is shorter, use the shortest duration
   # as the cutoff to keep both datasets temporally consistent.
-  target_hours <- min(cl_dur_hours, sv_dur_hours, exp_duration)
+  target_hours <- min(cl_dur_hours, sv_dur_hours, exp_duration, na.rm = TRUE)
 
-  # cl_cutoff_ms is the timestamp in UNIX ms associated to
-  # the first timestamp + experiment duration (e.g. 51 ore)
-  # 60*60*1000 is the ms to hour conversion!
-  cl_start_ms <- as.numeric(cl_datain[[1]][1])
-  cl_cutoff_ms <- cl_start_ms + target_hours * 60 * 60 * 1000
+  if (cl_ok) {
+    # cl_cutoff_ms is the timestamp in UNIX ms associated to
+    # the first timestamp + experiment duration (e.g. 51 ore)
+    # 60*60*1000 is the ms to hour conversion!
+    cl_start_ms <- as.numeric(cl_datain[[1]][1])
+    cl_cutoff_ms <- cl_start_ms + target_hours * 60 * 60 * 1000
 
-  # Here we select the row inside the dataset that has timestamp equal
-  # to "cl_cutoff_ms", then we store the index inside "cl_row_cutoff" var.
-  cl_row_cutoff <- max(which(as.numeric(cl_datain[[1]]) <= cl_cutoff_ms))
+    # Here we select the row inside the dataset that has timestamp equal
+    # to "cl_cutoff_ms", then we store the index inside "cl_row_cutoff" var.
+    cl_row_cutoff <- max(which(as.numeric(cl_datain[[1]]) <= cl_cutoff_ms))
+  }
 
-  # Same operation for server.
-  # Here timestamps are in seconds -> 60*60 conversion sec to hour!
-  sv_cutoff_timestamp <- sv_start_timestamp + target_hours * 60 * 60
-  # Datetime to timestamp conversion for the "timestamp cutoff"
-  # that follows
-  sv_timestamps <- as.POSIXct(sv_datain[[1]], tz = tz)
-  # Timestamp cutoff: we select the row that has timestamp equal to
-  # sv_cutoff_timestamp like done before in client.
-  sv_row_cutoff <- max(which(sv_timestamps <= sv_cutoff_timestamp))
+  if (sv_ok) {
+    # Same operation for server.
+    # Here timestamps are in seconds -> 60*60 conversion sec to hour!
+    sv_cutoff_timestamp <- sv_start_timestamp + target_hours * 60 * 60
+    # Datetime to timestamp conversion for the "timestamp cutoff"
+    # that follows
+    sv_timestamps <- as.POSIXct(sv_datain[[1]], tz = tz)
+    # Timestamp cutoff: we select the row that has timestamp equal to
+    # sv_cutoff_timestamp like done before in client.
+    sv_row_cutoff <- max(which(sv_timestamps <= sv_cutoff_timestamp))
+  }
 
   result <- data.frame(
     target_hours = target_hours,
