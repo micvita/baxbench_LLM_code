@@ -1,5 +1,6 @@
-#Read from all the csv analysis data if trend_sig is TRUE. If it is extract slope and confidence intervals, compute relative slope and compare with other slopes from the same metric.
-#The table should have on each row a metric and then on the columns the task + env
+# EXPERIMENTAL !!!!!
+# Read from all the csv analysis data if trend_sig is TRUE. If it is extract slope and confidence intervals, compute relative slope and compare with other slopes from the same metric.
+# The table should have on each row a metric and then on the columns the task + env
 
 library(readr)
 library(zoo)

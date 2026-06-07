@@ -1664,3 +1664,210 @@ x_time    0.000000 0.000000
                   Tau 
       0.0000002136629 
 [1] "Prewhitened Yue et al. test p-value for Latency is: 1"
+[1] "We are currently analyzing the following dataset: processes_credit_card_python_fast_api_app_only.csv"
+[1] "No parsing problems found in: processes_credit_card_python_fast_api_app_only.csv"
+[1] "We are currently analyzing the following variable: VSZ"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1252, n = 1252, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for VSZ is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 673508288, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8584095 
+
+[1] "Spearman test p-value for VSZ is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 48.526, n = 3056, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   2346099.0000000 2337501083.6666665          0.7089341 
+
+[1] "Mann-Kendall test p-value for VSZ is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+  Intercept       x_time  
+905312.3930       0.1112  
+
+             0.025          0.975
+Intercept 904830.4 905632.1235098
+x_time         0.0      0.1860443
+         Corrected Zc           new P-value                  N/N* 
+           2.55105075            0.01073987          361.82809132 
+           Original Z           old P.value                   Tau 
+          48.52552456            0.00000000            0.50258760 
+          Sen's slope          old.variance          new.variance 
+           0.11139241   2337501083.66666698 845773555553.73291016 
+[1] "Hamed-Rao Mann-Kendall test p-value for VSZ is: 0.0107398686086399"
+          Corrected Zc            new P-value                   N/N* 
+           2.779418520            0.005445631          304.812367208 
+            Original Z            old P.value                    Tau 
+          48.525524565            0.000000000            0.502587596 
+           Sen's slope           old.variance           new.variance 
+           0.111392405   2337501083.666666985 712499238662.684570312 
+[1] "Yue-Wang Mann-Kendall test p-value for VSZ is: 0.00544563133356047"
+             Z-Value          Sen's Slope     old. Sen's Slope 
+        48.065701390          0.001961291          0.111392405 
+             P-value                    S               Var(S) 
+         0.000000000    2323090.000000000 2335937016.000000000 
+                 Tau 
+         0.497984452 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for VSZ is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.5632390          0.1099718          0.1113924          0.0000000 
+                 S             Var(S)                Tau 
+   4648244.0000000 3169598140.6666665          0.9964113 
+[1] "Prewhitened Yue et al. test p-value for VSZ is: 0"
+[1] "We are currently analyzing the following variable: RSS"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for RSS is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 343071561, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9278766 
+
+[1] "Spearman test p-value for RSS is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 58.609, n = 3056, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   3062983.0000000 2731243069.0000000          0.8100373 
+
+[1] "Mann-Kendall test p-value for RSS is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+57590.9096      0.5317  
+
+                  0.025        0.975
+Intercept 56998.1995820 58289.893333
+x_time        0.5108625     0.550226
+           Corrected Zc             new P-value                    N/N* 
+           3.3748267291            0.0007386218          301.5959996542 
+             Original Z             old P.value                     Tau 
+          58.6089942111            0.0000000000            0.6561604014 
+            Sen's slope            old.variance            new.variance 
+           0.5324459235   2731243069.0000009537 823731983693.6934814453 
+[1] "Hamed-Rao Mann-Kendall test p-value for RSS is: 0.000738621798160203"
+             Corrected Zc               new P-value                      N/N* 
+           4.732817785890            0.000002214243          153.351831875845 
+               Original Z               old P.value                       Tau 
+          58.608994211106            0.000000000000            0.656160401368 
+              Sen's slope              old.variance              new.variance 
+           0.532445923461   2731243069.000000953674 418841127929.355529785156 
+[1] "Yue-Wang Mann-Kendall test p-value for RSS is: 0.00000221424250044877"
+             Z-Value          Sen's Slope     old. Sen's Slope 
+        57.436220113          0.002200456          0.532445923 
+             P-value                    S               Var(S) 
+         0.000000000    3000570.000000000 2729201076.000000477 
+                 Tau 
+         0.643211071 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for RSS is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.6360464          0.5323536          0.5324459          0.0000000 
+                 S             Var(S)                Tau 
+   4652343.0000000 3169598141.6666665          0.9972900 
+[1] "Prewhitened Yue et al. test p-value for RSS is: 0"
+[1] "We are currently analyzing the following variable: MEM"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1234, n = 1234, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for MEM is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 714253321, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8498437 
+
+[1] "Spearman test p-value for MEM is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 46.973, n = 3056, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                S              varS               tau 
+   2248348.000000 2291066612.000000          0.694008 
+
+[1] "Mann-Kendall test p-value for MEM is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+      0.8        0.0  
+
+              0.025     0.975
+Intercept 0.6634376 0.8558033
+x_time    0.0000000 0.0000000
+         Corrected Zc           new P-value                  N/N* 
+            1.8763408             0.0606085           626.7084212 
+           Original Z           old P.value                   Tau 
+           46.9725872             0.0000000             0.4816471 
+          Sen's slope          old.variance          new.variance 
+            0.0000000    2291066612.0000000 1435830739168.3903809 
+[1] "Hamed-Rao Mann-Kendall test p-value for MEM is: 0.0606085017512366"
+          Corrected Zc            new P-value                   N/N* 
+            2.12097217             0.03392414           490.47742147 
+            Original Z            old P.value                    Tau 
+           46.97258717             0.00000000             0.48164712 
+           Sen's slope           old.variance           new.variance 
+            0.00000000    2291066612.00000000 1123716444260.49096680 
+[1] "Yue-Wang Mann-Kendall test p-value for MEM is: 0.0339241440779182"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        46.9118256          0.0000000          0.0000000          0.0000000 
+                 S             Var(S)                Tau 
+   2244705.0000000 2289567713.0000000          0.4811816 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for MEM is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        46.9118256          0.0000000          0.0000000          0.0000000 
+                 S             Var(S)                Tau 
+   2244705.0000000 2289567713.0000000          0.4811816 
+[1] "Prewhitened Yue et al. test p-value for MEM is: 0"

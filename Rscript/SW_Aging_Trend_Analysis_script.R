@@ -121,7 +121,7 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
 
   # 1. Read CSV, row cuttoff for coherence and parsing issues
   datain <- readr::read_csv(csv_path, show_col_types = FALSE)
-  if (is.na(row_cutoff)){
+  if (is.na(row_cutoff)) {
     stop("NO VALID CUTOFF FOR CSV!")
   } else {
     datain <- datain[1:row_cutoff, ]
@@ -181,7 +181,7 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
                               aggr_FUN, aggr_align, aggr_period, tz)
     } else {
       # Create time series object with xts package without aggregation
-      vut_ts <- xts(datain[[col]], datain[[dt_position]])
+      vut_ts <- xts(datain[[col]], as.POSIXct(datain[[dt_position]], tz = tz))
     }
 
     # current data ("variable under test" vut)
@@ -452,8 +452,12 @@ plot_fun <- function(trend_sig, sslope, ci_slope, vut, date, x_time,
 
   # Sanitize title
   fname <- gsub("[^A-Za-z0-9_-]", "_", colnames(datain)[col])
+
+  trend_dir <- file.path(output_dir, "trend")
+  dir.create(trend_dir, recursive = TRUE, showWarnings = FALSE)
+
   file_name <- paste0("plot_", fname, ".svg")
-  file_path <- file.path(output_dir, file_name)
+  file_path <- file.path(trend_dir, file_name)
 
   svg(file_path, width = 15, height = 5)
   on.exit(dev.off(), add = TRUE)
@@ -575,6 +579,11 @@ aggregate_fun <- function(vut, timestamp, FUN, align, period, tz) {
 #'   POSIXct. Difference between Datetime i and Datetime i+1 is always
 #'   1 minute!
 #'
+#' @param proc_csv_path Character. Path to the process CSV file. The first
+#'   column is expected to contain datetime values that can be converted to
+#'   POSIXct. Difference between Datetime i and Datetime i+1 is always
+#'   1 minute!
+#'
 #' @param exp_duration Numeric. Maximum experiment duration expressed in hours.
 #'   The default value is 51.
 #'
@@ -596,21 +605,25 @@ aggregate_fun <- function(vut, timestamp, FUN, align, period, tz) {
 #' Unix milliseconds. For the server dataset, the cutoff is computed using
 #' POSIXct datetime values.
 
-cutoff_row_fun <- function(cl_csv_path, sv_csv_path, exp_duration = 51,
-                           tz = "America/Sao_Paulo") {
+cutoff_row_fun <- function(cl_csv_path, sv_csv_path, proc_csv_path,
+                           exp_duration = 51, tz = "America/Sao_Paulo") {
 
   # CHANGE IF THE TIMESTAMP IS NOT UNIX MS FORMAT
   # TODO: make it a parameter
   UNIX_ms_convert <- 1000
 
-  sv_ok <- FALSE
-  cl_ok <- FALSE
-  sv_dur_hours <- NA
-  cl_dur_hours <- NA
-  sv_row_cutoff <- NA
-  cl_row_cutoff <- NA
+  sv_ok           <- FALSE
+  cl_ok           <- FALSE
+  proc_ok         <- FALSE
+  sv_dur_hours    <- NA
+  cl_dur_hours    <- NA
+  sv_row_cutoff   <- NA
+  cl_row_cutoff   <- NA
+  proc_dur_hours  <- NA
+  proc_row_cutoff <- NA
 
-  if (!is_empty(cl_csv_path) && !is.na(cl_csv_path)) {
+
+  if (!is_blank_path(cl_csv_path)) {
     cl_ok <- TRUE
     cl_datain <- read_csv(cl_csv_path, show_col_types = FALSE)
 
@@ -625,25 +638,42 @@ cutoff_row_fun <- function(cl_csv_path, sv_csv_path, exp_duration = 51,
                                         units = "hours"))
   }
 
-  if (!is_empty(sv_csv_path) && !is.na(sv_csv_path)) {
+  if (!is_blank_path(sv_csv_path)) {
     sv_ok <- TRUE
     sv_datain <- read_csv(sv_csv_path, show_col_types = FALSE)
 
     # Server timestamp computations
-    sv_start_timestamp <- as.POSIXct(sv_datain[[1]][1], tz = tz)
-    sv_end_timestamp <- as.POSIXct(sv_datain[[1]][nrow(sv_datain)], tz = tz)
+    sv_start_timestamp <- as.POSIXct(sv_datain[[1]][1],
+                                     format = "%Y-%m-%d %H:%M:%OS", tz = tz)
+    sv_end_timestamp <- as.POSIXct(sv_datain[[1]][nrow(sv_datain)],
+                                   format = "%Y-%m-%d %H:%M:%OS", tz = tz)
     sv_dur_hours <- as.numeric(difftime(sv_end_timestamp, sv_start_timestamp,
                                         units = "hours"))
   }
 
-  if (!sv_ok && !cl_ok) {
+  if (!is_blank_path(proc_csv_path)) {
+    proc_ok <- TRUE
+    proc_datain <- read_csv(proc_csv_path, show_col_types = FALSE)
+
+    proc_start_timestamp <- as.POSIXct(proc_datain[[1]][1],
+                                       format = "%d/%m/%Y+%H:%M:%S", tz = tz)
+    proc_end_timestamp <- as.POSIXct(proc_datain[[1]][nrow(proc_datain)],
+                                     format = "%d/%m/%Y+%H:%M:%S", tz = tz)
+    proc_dur_hours <- as.numeric(difftime(proc_end_timestamp,
+                                          proc_start_timestamp,
+                                          units = "hours"))
+  }
+
+  if (!sv_ok && !cl_ok && !proc_ok) {
     stop("NO Valid CSV files!")
   }
 
   # Default experiment duration is 51 hours.
-  # If either the client or server CSV is shorter, use the shortest duration
-  # as the cutoff to keep both datasets temporally consistent.
-  target_hours <- min(cl_dur_hours, sv_dur_hours, exp_duration, na.rm = TRUE)
+  # If either the client, server or processes CSV is shorter,
+  # use the shortest duration as the cutoff to keep all datasets
+  # temporally consistent.
+  target_hours <- min(cl_dur_hours, sv_dur_hours, proc_dur_hours,
+                      exp_duration, na.rm = TRUE)
 
   if (cl_ok) {
     # cl_cutoff_ms is the timestamp in UNIX ms associated to
@@ -663,18 +693,29 @@ cutoff_row_fun <- function(cl_csv_path, sv_csv_path, exp_duration = 51,
     sv_cutoff_timestamp <- sv_start_timestamp + target_hours * 60 * 60
     # Datetime to timestamp conversion for the "timestamp cutoff"
     # that follows
-    sv_timestamps <- as.POSIXct(sv_datain[[1]], tz = tz)
+    sv_timestamps <- as.POSIXct(sv_datain[[1]],
+                                format = "%Y-%m-%d %H:%M:%OS", tz = tz)
     # Timestamp cutoff: we select the row that has timestamp equal to
     # sv_cutoff_timestamp like done before in client.
     sv_row_cutoff <- max(which(sv_timestamps <= sv_cutoff_timestamp))
+  }
+
+  if (proc_ok) {
+    # Same operation done for server: proc.csv has samples every minute!.
+    proc_cutoff_timestamp <- proc_start_timestamp + target_hours * 60 * 60
+    proc_timestamps <- as.POSIXct(proc_datain[[1]],
+                                  format = "%d/%m/%Y+%H:%M:%S", tz = tz)
+    proc_row_cutoff <- max(which(proc_timestamps <= proc_cutoff_timestamp))
   }
 
   result <- data.frame(
     target_hours = target_hours,
     cl_duration_hours = cl_dur_hours,
     sv_duration_hours = sv_dur_hours,
+    proc_duration_hours = proc_dur_hours,
     cl_row_cutoff = cl_row_cutoff,
-    sv_row_cutoff = sv_row_cutoff
+    sv_row_cutoff = sv_row_cutoff,
+    proc_row_cutoff = proc_row_cutoff
   )
   return (result)
 }
@@ -713,8 +754,28 @@ cutoff_row_fun <- function(cl_csv_path, sv_csv_path, exp_duration = 51,
 ac_pac_diagnostic <- function(residuals, time_series_name, plot_dir, lag_max) {
 
   fname <- gsub("[^A-Za-z0-9_-]", "_", time_series_name)
-  acf_file <- file.path(plot_dir, paste0("acf_", fname, ".svg"))
-  pacf_file <- file.path(plot_dir, paste0("pacf_", fname, ".svg"))
+
+  acf_dir <- file.path(plot_dir, "acf")
+  pacf_dir <- file.path(plot_dir, "pacf")
+
+  dir.create(acf_dir, recursive = TRUE, showWarnings = FALSE)
+  dir.create(pacf_dir, recursive = TRUE, showWarnings = FALSE)
+
+  acf_file <- file.path(acf_dir, paste0("acf_", fname, ".svg"))
+  pacf_file <- file.path(pacf_dir, paste0("pacf_", fname, ".svg"))
+
+  residuals <- residuals[is.finite(residuals)]
+
+  # Not enough residuals for the test
+  if (length(residuals) < 3) {
+    return(data.frame(
+      ljung_box_pvalue = NA_real_,
+      autocorr_detected = NA
+    ))
+  }
+
+  lag_max <- min(lag_max, length(residuals) - 1)
+  lb_lag  <- min(floor(lag_max / 2), length(residuals) - 1)
 
 
   # Lag 1 is the correlation between values that are ONE time period apart
@@ -732,7 +793,7 @@ ac_pac_diagnostic <- function(residuals, time_series_name, plot_dir, lag_max) {
       main = paste("PACF residuals -", time_series_name))
   dev.off()
 
-  lb_res <- Box.test(residuals, lag = lag_max / 2, type = "Ljung-Box")
+  lb_res <- Box.test(residuals, lag = lb_lag, type = "Ljung-Box")
 
   #Default
   autocorr_detected <- FALSE
@@ -745,6 +806,17 @@ ac_pac_diagnostic <- function(residuals, time_series_name, plot_dir, lag_max) {
                      ljung_box_pvalue =  lb_res$p.value,
                      autocorr_detected = autocorr_detected)
   )
+}
+
+#' Auxiliary function
+#' @param x Character. A CSV path to check if It is empty.
+#'
+#' @details
+#' The following aux function check the input and
+#' returns TRUE if the path was empty.
+
+is_blank_path <- function(x) {
+  length(x) == 0 || is.na(x) || trimws(x) %in% c("", "NA", "NO_CSV")
 }
 
 #' Main entry point for the trend analysis script
@@ -764,7 +836,7 @@ ac_pac_diagnostic <- function(residuals, time_series_name, plot_dir, lag_max) {
 #'
 #' The script expects the following command-line format:
 #'
-#' "Rscript script.R <server_csv> <client_csv> <task_name> <env_name>"
+#' "Rscript script.R <server_csv> <client_csv> <process_csv> <task_name> <env_name>"
 #'
 #' The expected arguments are:
 #'
@@ -772,9 +844,11 @@ ac_pac_diagnostic <- function(residuals, time_series_name, plot_dir, lag_max) {
 #'    server-side monitoring data.
 #' 2. client_csv: absolute or relative path to the CSV file containing
 #'    client-side/JMeter data.
-#' 3. task_name: name of the benchmark task, e.g. "monitor",
+#' 3. process_csv: absolute or relative path to the CSV file containing
+#'    process data like RSS and VSZ.
+#' 4. task_name: name of the benchmark task, e.g. "monitor",
 #'    "ImageConverter", "uptime", or "credit_card".
-#' 4. env_name: language and framework identifier, e.g. "python_django",
+#' 5. env_name: language and framework identifier, e.g. "python_django",
 #'    "python_fastapi", or "python_aiohttp".
 #'
 #' The function creates three output directories:
@@ -783,12 +857,12 @@ ac_pac_diagnostic <- function(residuals, time_series_name, plot_dir, lag_max) {
 #' - Rscript/logs: stores the execution log.
 #' - Rscript/plots: stores trend, ACF, and PACF plots.
 #'
-#' Client and server files are first aligned using cutoff_row_fun(), so both
-#' datasets are analyzed over the same time window. The server CSV is analyzed
-#' without aggregation, while the client CSV is aggregated into one-minute
-#' intervals before analysis.
+#' Client, process and server files are first aligned using cutoff_row_fun(),
+#' so all datasets are analyzed over the same time window. The server and
+#' process CSVs are analyzed without aggregation, while the
+#' client CSV is aggregated into one-minute intervals before analysis.
 #'
-#' If an empty string is provided for either server_csv or client_csv, the
+#' If a "NO_CSV" string is provided for any csv path arg, the
 #' corresponding analysis step is skipped.
 
 main <- function(...) {
@@ -798,22 +872,25 @@ main <- function(...) {
     plot_dir   = file.path(getwd(), "Rscript/plots"),
     exclude_server_cols = c(1),
     exclude_client_cols = c(1),
+    exclude_process_cols = c(1, 2, 3, 7, 8, 9),
     tz = "America/Sao_Paulo"
   )
 
   args <- commandArgs(trailingOnly = TRUE)
 
-  if (length(args) < 2 || length(args) > 4) {
-    stop("Check args! The cmd should be in the following format: 
-    Rscript script.R <server_csv> <client_csv> <task_name> <env_name>")
+  if (length(args) != 5) {
+    stop("Check args! The cmd should be in the following format:
+      Rscript script.R <server_csv> <client_csv> <process_csv> <task_name> <env_name>
+      You can give write NO_CSV as an argument for any missing csvs! ")
   }
 
   server_csv <- args[1]
   client_csv <- args[2]
-  task_name  <- args[3]
-  env_name   <- args[4]
+  proc_csv   <- args[3]
+  task_name  <- args[4]
+  env_name   <- args[5]
 
-  path_plots <- file.path(config$plot_dir, 
+  path_plots <- file.path(config$plot_dir,
                           paste(env_name, task_name, sep = "_"))
 
   dir.create(config$output_dir, recursive = TRUE, showWarnings = FALSE)
@@ -833,11 +910,12 @@ main <- function(...) {
   # we close all files (even the log)
   on.exit(closeAllConnections(), add = TRUE)
 
-  row_cutoff_res <- cutoff_row_fun(client_csv, server_csv, tz = config$tz)
+  row_cutoff_res <- cutoff_row_fun(client_csv, server_csv, proc_csv,
+                                   tz = config$tz)
 
-  # You should give an empty string in input if you do not want
+  # You should give an "NO_CSV" string in input if you do not want
   # to analyze a server or client csv
-  if (!(is_empty(server_csv))) {
+  if (!is_blank_path(server_csv)) {
 
     dataout_server <- trend_analysis(
       exclude_list = config$exclude_server_cols,
@@ -856,7 +934,7 @@ main <- function(...) {
     )
   }
 
-  if (!(is_empty(client_csv))) {
+  if (!is_blank_path(client_csv)) {
 
     dataout_client <- trend_analysis(
       exclude_list = config$exclude_client_cols,
@@ -873,6 +951,26 @@ main <- function(...) {
       dataout_client,
       file.path(config$output_dir, paste(env_name, task_name,
                                          "data_test_client.csv", sep = "_"))
+    )
+  }
+
+  if (!is_blank_path(proc_csv)) {
+
+    dataout_process <- trend_analysis(
+      exclude_list = config$exclude_process_cols,
+      csv_path = proc_csv,
+      task_name = task_name,
+      env_name = env_name,
+      row_cutoff = row_cutoff_res$proc_row_cutoff,
+      dt_position = 8,
+      tz = config$tz,
+      plot_dir = path_plots
+    )
+
+    write_csv(
+      dataout_process,
+      file.path(config$output_dir, paste(env_name, task_name,
+                                         "data_test_process.csv", sep = "_"))
     )
   }
 }

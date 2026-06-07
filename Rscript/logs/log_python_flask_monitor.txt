@@ -1,0 +1,13 @@
+Error:
+! 'Rscript/raw_csv_data/python_resource_monitor_python_flask.csv' does not exist in current working directory: 'C:/Users/zonom/baxbench_LLM_code'.
+Backtrace:
+    ▆
+ 1. ├─global main()
+ 2. │ └─global cutoff_row_fun(client_csv, server_csv, proc_csv, tz = config$tz)
+ 3. │   └─readr::read_csv(sv_csv_path, show_col_types = FALSE)
+ 4. │     └─vroom::vroom(...)
+ 5. │       └─vroom:::vroom_(...)
+ 6. └─vroom (local) `<fn>`("Rscript/raw_csv_data/python_resource_monitor_python_flask.csv")
+ 7.   └─vroom:::check_path(path)
+ 8.     └─cli::cli_abort(msg, call = call)
+ 9.       └─rlang::abort(...)

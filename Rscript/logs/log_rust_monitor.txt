@@ -976,3 +976,150 @@ sample estimates:
 
 [1] "Mann-Kendall test p-value for Latency is: 0.371712956030794"
 [1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following dataset: processes_monitor_rust_app_only.csv"
+[1] "No parsing problems found in: processes_monitor_rust_app_only.csv"
+[1] "We are currently analyzing the following variable: VSZ"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 423, n = 843, p-value = 0.9451
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for VSZ is: 0.945087629492529"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4805805566, p-value = 0.8082
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+         rho 
+-0.004388968 
+
+[1] "Spearman test p-value for VSZ is: 0.808185879906613"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = -0.24089, n = 3062, p-value = 0.8096
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                   S                 varS                  tau 
+    -12072.000000000 2510965256.666666508         -0.003472574 
+
+[1] "Mann-Kendall test p-value for VSZ is: 0.809638598782287"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: RSS"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 573, n = 1531, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for RSS is: 0.0000000000000000000000584200091804884"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 5735777184, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.1987483 
+
+[1] "Spearman test p-value for RSS is: 0.000000000000000000000000000119595495499901"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = -19.762, n = 3062, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                S              varS               tau 
+  -1114252.000000 3179137950.000000         -0.243824 
+
+[1] "Mann-Kendall test p-value for RSS is: 0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000633938995501805"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+14192.7439     -0.0165  
+
+                   0.025          0.975
+Intercept 13987.54771331 14477.96422617
+x_time       -0.01714016    -0.01583218
+                                                                                            Corrected Zc 
+         -5.40408555549897595682296014274470508098602294921875000000000000000000000000000000000000000000 
+                                                                                             new P-value 
+          0.00000006513984913212174211218086217201062027015723288059234619140625000000000000000000000000 
+                                                                                                    N/N* 
+         13.37248931975912746850099210860207676887512207031250000000000000000000000000000000000000000000 
+                                                                                              Original Z 
+        -19.76188400647018639233465364668518304824829101562500000000000000000000000000000000000000000000 
+                                                                                             old P.value 
+          0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000633939 
+                                                                                                     Tau 
+         -0.23776334497057544092868397456186357885599136352539062500000000000000000000000000000000000000 
+                                                                                             Sen's slope 
+         -0.01650335224342444617740000012418022379279136657714843750000000000000000000000000000000000000 
+                                                                                            old.variance 
+ 3179137949.99999952316284179687500000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                            new.variance 
+42512988282.41592407226562500000000000000000000000000000000000000000000000000000000000000000000000000000 
+[1] "Hamed-Rao Mann-Kendall test p-value for RSS is: 0.0000000651398491321217"
+                                                                                            Corrected Zc 
+         -5.52018265440010758027256088098511099815368652343750000000000000000000000000000000000000000000 
+                                                                                             new P-value 
+          0.00000003386474638382487790683877948438862404145766049623489379882812500000000000000000000000 
+                                                                                                    N/N* 
+         12.81592022736196589960400160634890198707580566406250000000000000000000000000000000000000000000 
+                                                                                              Original Z 
+        -19.76188400647018639233465364668518304824829101562500000000000000000000000000000000000000000000 
+                                                                                             old P.value 
+          0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000633939 
+                                                                                                     Tau 
+         -0.23776334497057544092868397456186357885599136352539062500000000000000000000000000000000000000 
+                                                                                             Sen's slope 
+         -0.01650335224342444617740000012418022379279136657714843750000000000000000000000000000000000000 
+                                                                                            old.variance 
+ 3179137949.99999952316284179687500000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                            new.variance 
+40743578358.97904968261718750000000000000000000000000000000000000000000000000000000000000000000000000000 
+[1] "Yue-Wang Mann-Kendall test p-value for RSS is: 0.0000000338647463838249"
+                                 Z-Value 
+        -9.88872523286210736159773659892 
+                             Sen's Slope 
+        -0.01100215228622459379126397039 
+                        old. Sen's Slope 
+        -0.01650335224342444617740000012 
+                                 P-value 
+         0.00000000000000000000004659229 
+                                       S 
+   -557951.00000000000000000000000000000 
+                                  Var(S) 
+3183537311.66666889190673828125000000000 
+                                     Tau 
+        -0.11913552963382892380117539233 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for RSS is: 0.0000000000000000000000465922905339557"
+                                                   Z-Value 
+       -13.36370718342107721809952636249363422393798828125 
+                                               Sen's Slope 
+        -0.01514453304145504594635518458289880072697997093 
+                                           Old Sen's Slope 
+        -0.01650335224342444617740000012418022379279136658 
+                                                   P-value 
+         0.00000000000000000000000000000000000000009853206 
+                                                         S 
+   -754584.00000000000000000000000000000000000000000000000 
+                                                    Var(S) 
+3188306990.00000000000000000000000000000000000000000000000 
+                                                       Tau 
+        -0.16112125346708430773112752376619027927517890930 
+[1] "Prewhitened Yue et al. test p-value for RSS is: 0.0000000000000000000000000000000000000000985320563396752"
+[1] "We are currently analyzing the following variable: MEM"
+[1] "Skipping MEM : constant series"
