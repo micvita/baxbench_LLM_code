@@ -2,7 +2,7 @@ library(readr)
 
 #' Script to run multiple Trend Analysis based on the runs.txt file.
 
-runs_path <- file.path(getwd(), "Rscript", "runs.txt")
+runs_path <- file.path(getwd(), "Rscript", "runs_js.txt")
 
 runs <- read_csv(
   runs_path,
