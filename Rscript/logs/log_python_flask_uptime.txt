@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 54.50858
+[1] 54.52266
+[1] 54.53806
 [1] "We are currently analyzing the following dataset: python_resource_uptime_python_flask.csv"
 [1] "No parsing problems found in: python_resource_uptime_python_flask.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -958,8 +962,8 @@ sample estimates:
 
 [1] "Mann-Kendall test p-value for Latency is: 0.226283764834457"
 [1] "NO Trend DETECTED!"
-[1] "We are currently analyzing the following dataset: processes_uptime_python_flask_app_only.csv"
-[1] "No parsing problems found in: processes_uptime_python_flask_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_uptime_python_flask.csv"
+[1] "No parsing problems found in: processes_uptime_python_flask.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

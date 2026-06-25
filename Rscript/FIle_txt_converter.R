@@ -25,6 +25,17 @@ get_cmd_from_env <- function(file_path) {
     ))
   }
 
+  if (str_detect(filename, "open")) {
+    return(c(
+      "python(3)? .*api_server\\.py",
+      "python(3)? api_server\\.py",
+      "api_server\\.py",
+      "python(3)? -m uvicorn api\\.main:app.*",
+      "python(3)? .*uvicorn api\\.main:app.*",
+      "uvicorn api\\.main:app.*"
+    ))
+  }
+
   if (str_detect(filename, "flask")) {
     return(c(
       "code_prompt1.py",
@@ -195,7 +206,7 @@ clean_all_txt_files_routine <- function(
 
 # MAIN
 
-basePath   <- file.path(getwd(), "Rscript/raw_txt_data/flask")
+basePath   <- file.path(getwd(), "Rscript/raw_txt_data/open")
 output_dir <- file.path(getwd(), "Rscript/raw_csv_data")
 
 cleaned_app_files <- clean_all_txt_files_routine(

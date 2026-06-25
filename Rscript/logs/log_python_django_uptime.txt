@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 50.99998
+[1] 60.41044
+[1] 60.38139
 [1] "We are currently analyzing the following dataset: python_resource_uptime_python_django.csv"
 [1] "No parsing problems found in: python_resource_uptime_python_django.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -1466,8 +1470,8 @@ Intercept     x_time
              0.025          0.975
 Intercept 547.1342 566.3453393188
 x_time      0.0000   0.0003257329
-[1] "We are currently analyzing the following dataset: processes_uptime_python_django_app_only.csv"
-[1] "No parsing problems found in: processes_uptime_python_django_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_uptime_python_django.csv"
+[1] "No parsing problems found in: processes_uptime_python_django.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

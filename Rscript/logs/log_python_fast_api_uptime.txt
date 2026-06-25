@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 50.99994
+[1] 67.75315
+[1] 545.7686
 [1] "We are currently analyzing the following dataset: python_resource_uptime_python_fast_api.csv"
 [1] "No parsing problems found in: python_resource_uptime_python_fast_api.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -1610,8 +1614,8 @@ x_time     0.00000  0.00000
                  Tau 
         -0.033568790 
 [1] "Prewhitened Yue et al. test p-value for Latency is: 0.00527703666857321"
-[1] "We are currently analyzing the following dataset: processes_uptime_python_fast_api_app_only.csv"
-[1] "No parsing problems found in: processes_uptime_python_fast_api_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_uptime_python_fast_api.csv"
+[1] "No parsing problems found in: processes_uptime_python_fast_api.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

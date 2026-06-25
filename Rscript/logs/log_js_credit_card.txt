@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 68.61111
+[1] 68.70377
+[1] 68.68694
 [1] "We are currently analyzing the following dataset: js_resource_credit_card.csv"
 [1] "No parsing problems found in: js_resource_credit_card.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"

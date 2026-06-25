@@ -483,7 +483,7 @@ plot_fun <- function(trend_sig, sslope, ci_slope, vut, date, x_time,
     data$sen_fit_uci <- intercept_uci_plot + slope_uci * data$x
 
     # Scatter plot + Regression line using geom_line (ggplot2 library)
-    ggp <- ggplot(data, aes(x = date, y = vut)) +
+    ggp <- ggplot(data, aes(x = x / 60, y = vut)) +
       geom_point(size = 0.7, alpha = 0.75, show.legend = FALSE) +
       geom_line(aes(y = sen_fit, color = "Estimated Trend", linetype = "Estimated Trend"), linewidth = 0.9) + 
       geom_line(aes(y = sen_fit_lci, color = "95% CI Lower", linetype = "95% CI Lower"), linewidth = 0.2) +
@@ -496,10 +496,10 @@ plot_fun <- function(trend_sig, sslope, ci_slope, vut, date, x_time,
                                                   "Estimated Trend" = "solid",
                                                   "95% CI Lower" = "dashed",
                                                   "95% CI Upper" = "dashed")) +
-      scale_x_datetime(date_breaks = "2 hour", date_labels = "%H:%M") +
+      scale_x_continuous(breaks = seq(0, max(data$x / 60), by = 2)) +
       labs(title = paste(colnames(datain)[col], "Time series"),
            x = "Time (hours)", y = colnames(datain)[col]) +
-      theme_classic() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      theme_linedraw() + theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
   } else {
 
@@ -507,7 +507,7 @@ plot_fun <- function(trend_sig, sslope, ci_slope, vut, date, x_time,
       geom_point(size = 0.7, alpha = 0.75, show.legend = FALSE) +
       scale_x_datetime(date_breaks = "2 hour",date_labels = "%H:%M") +
       labs(title = paste(colnames(datain)[col], "Time series"),
-           x = "Time (hours)", y = colnames(datain)[col]) + theme_classic() +
+           x = "Time (hours)", y = colnames(datain)[col]) + theme_linedraw() +
       theme(axis.text.x = element_text(angle = 45, hjust = 1))
   }
   print(ggp)
@@ -717,6 +717,13 @@ cutoff_row_fun <- function(cl_csv_path, sv_csv_path, proc_csv_path,
     sv_row_cutoff = sv_row_cutoff,
     proc_row_cutoff = proc_row_cutoff
   )
+
+  # Debug can be removed
+  print("DEBUG client-server-proc duration times:")
+  print(cl_dur_hours)
+  print(sv_dur_hours)
+  print(proc_dur_hours)
+
   return (result)
 }
 

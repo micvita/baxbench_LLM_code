@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] NA
+[1] 64.24816
+[1] 64.22417
 [1] "We are currently analyzing the following dataset: rust_resource_credit_card.csv"
 [1] "No parsing problems found in: rust_resource_credit_card.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -789,8 +793,8 @@ x_time      533358.5    554598.9
                  S             Var(S)                Tau 
    4663816.0000000 3172711186.6666665          0.9990951 
 [1] "Prewhitened Yue et al. test p-value for total_IO_write is: 0"
-[1] "We are currently analyzing the following dataset: processes_credit_card_rust_app_only.csv"
-[1] "No parsing problems found in: processes_credit_card_rust_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_credit_card_rust.csv"
+[1] "No parsing problems found in: processes_credit_card_rust.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 [1] "Skipping VSZ : constant series"
 [1] "We are currently analyzing the following variable: RSS"

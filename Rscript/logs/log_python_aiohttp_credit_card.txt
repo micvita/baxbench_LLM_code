@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] NA
+[1] 51.0187
+[1] 51.01639
 [1] "We are currently analyzing the following dataset: python_resource_credit_card_python_aiohttp.csv"
 [1] "No parsing problems found in: python_resource_credit_card_python_aiohttp.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -1480,8 +1484,8 @@ x_time    0.0007443964 0.0007884619
 [1] "Prewhitened Yue et al. test p-value for GC_gen1 is: 0"
 [1] "We are currently analyzing the following variable: GC_gen2"
 [1] "Skipping GC_gen2 : constant series"
-[1] "We are currently analyzing the following dataset: processes_credit_card_python_aiohttp_app_only.csv"
-[1] "No parsing problems found in: processes_credit_card_python_aiohttp_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_credit_card_python_aiohttp.csv"
+[1] "No parsing problems found in: processes_credit_card_python_aiohttp.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

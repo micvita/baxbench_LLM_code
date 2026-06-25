@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 51
+[1] 56.55871
+[1] 56.5575
 [1] "We are currently analyzing the following dataset: python_resource_monitor_python_aiohttp.csv"
 [1] "No parsing problems found in: python_resource_monitor_python_aiohttp.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -1510,8 +1514,8 @@ x_time     0.00000  0.00000
                    Tau 
         -0.04741713619 
 [1] "Prewhitened Yue et al. test p-value for Latency is: 0.0000118264313703217"
-[1] "We are currently analyzing the following dataset: processes_monitor_python_aiohttp_app_only.csv"
-[1] "No parsing problems found in: processes_monitor_python_aiohttp_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_monitor_python_aiohttp.csv"
+[1] "No parsing problems found in: processes_monitor_python_aiohttp.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

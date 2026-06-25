@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 50.99972
+[1] 51.03662
+[1] 51.00583
 [1] "We are currently analyzing the following dataset: python_resource_credit_card_python_fast_api.csv"
 [1] "No parsing problems found in: python_resource_credit_card_python_fast_api.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -1664,8 +1668,8 @@ x_time    0.000000 0.000000
                   Tau 
       0.0000002136629 
 [1] "Prewhitened Yue et al. test p-value for Latency is: 1"
-[1] "We are currently analyzing the following dataset: processes_credit_card_python_fast_api_app_only.csv"
-[1] "No parsing problems found in: processes_credit_card_python_fast_api_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_credit_card_python_fast_api.csv"
+[1] "No parsing problems found in: processes_credit_card_python_fast_api.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

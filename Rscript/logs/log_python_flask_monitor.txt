@@ -1,13 +1,972 @@
-Error:
-! 'Rscript/raw_csv_data/python_resource_monitor_python_flask.csv' does not exist in current working directory: 'C:/Users/zonom/baxbench_LLM_code'.
-Backtrace:
-    ▆
- 1. ├─global main()
- 2. │ └─global cutoff_row_fun(client_csv, server_csv, proc_csv, tz = config$tz)
- 3. │   └─readr::read_csv(sv_csv_path, show_col_types = FALSE)
- 4. │     └─vroom::vroom(...)
- 5. │       └─vroom:::vroom_(...)
- 6. └─vroom (local) `<fn>`("Rscript/raw_csv_data/python_resource_monitor_python_flask.csv")
- 7.   └─vroom:::check_path(path)
- 8.     └─cli::cli_abort(msg, call = call)
- 9.       └─rlang::abort(...)
+[1] "DEBUG client-server-proc duration times:"
+[1] NA
+[1] 54.25537
+[1] 54.22944
+[1] "We are currently analyzing the following dataset: python_resource_monitor_python_flask.csv"
+[1] "No parsing problems found in: python_resource_monitor_python_flask.csv"
+[1] "We are currently analyzing the following variable: totalCpuUsage(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 258, n = 532, p-value = 0.5155
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for totalCpuUsage(%) is: 0.51551562808714"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4740197894, p-value = 0.8056
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+        rho 
+0.004453721 
+
+[1] "Spearman test p-value for totalCpuUsage(%) is: 0.80556816253005"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 0.24529, n = 3057, p-value = 0.8062
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+           S         varS          tau 
+9.806000e+03 1.597838e+09 3.571281e-03 
+
+[1] "Mann-Kendall test p-value for totalCpuUsage(%) is: 0.806231277828147"
+[1] "NO Trend DETECTED!"
+[1] "We are currently analyzing the following variable: totalMemory"
+[1] "Skipping totalMemory : constant series"
+[1] "We are currently analyzing the following variable: availableMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 0, n = 1528, p-value < 2.2e-16
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for availableMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 9025362711, p-value < 2.2e-16
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.8955256 
+
+[1] "Spearman test p-value for availableMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = -58.791, n = 3057, p-value < 2.2e-16
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+            S          varS           tau 
+-3.313117e+06  3.175826e+09 -7.092992e-01 
+
+[1] "Mann-Kendall test p-value for availableMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+6090572524      -45508  
+
+                  0.025         0.975
+Intercept 6049543036.64 6127309711.99
+x_time        -46248.42     -44758.48
+             Corrected Zc               new P-value                      N/N* 
+          -4.615242000854            0.000003926375          162.266035601813 
+               Original Z               old P.value                       Tau 
+         -58.790653968473            0.000000000000           -0.709280434399 
+              Sen's slope              old.variance              new.variance 
+      -45554.609503731132   3175826010.333335876465 515328696457.913757324219 
+[1] "Hamed-Rao Mann-Kendall test p-value for availableMemory is: 0.00000392637529081988"
+                     Corrected Zc                       new P-value 
+          -7.58285091988455839385            0.00000000000003380432 
+                             N/N*                        Original Z 
+          60.11066697059339247744          -58.79065396847319391327 
+                      old P.value                               Tau 
+           0.00000000000000000000           -0.70928043439912169532 
+                      Sen's slope                      old.variance 
+      -45554.60950373113155364990   3175826010.33333587646484375000 
+                     new.variance 
+190901019663.69543457031250000000 
+[1] "Yue-Wang Mann-Kendall test p-value for availableMemory is: 0.0000000000000338043201370893"
+                                   Z-Value 
+       -10.6811098024187547395058572874404 
+                               Sen's Slope 
+      -455.5493549776690542785217985510826 
+                          old. Sen's Slope 
+    -45554.6095037311315536499023437500000 
+                                   P-value 
+         0.0000000000000000000000000124771 
+                                         S 
+   -601634.0000000000000000000000000000000 
+                                    Var(S) 
+3172711186.6666665077209472656250000000000 
+                                       Tau 
+        -0.1288836428136862499727044450992 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for availableMemory is: 0.0000000000000000000000000124771011256442"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+       -76.4118876     -45601.1927989     -45554.6095037          0.0000000 
+                 S             Var(S)                Tau 
+  -4304040.0000000 3172711186.6666665         -0.9220229 
+[1] "Prewhitened Yue et al. test p-value for availableMemory is: 0"
+[1] "We are currently analyzing the following variable: usedMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for usedMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 711683941, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8505306 
+
+[1] "Spearman test p-value for usedMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 53.193, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   2997656.0000000 3175826014.6666665          0.6417626 
+
+[1] "Mann-Kendall test p-value for usedMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+1091222839       36978  
+
+                  0.025         0.975
+Intercept 1056774327.07 1128847128.75
+x_time         36249.82      37694.95
+            Corrected Zc              new P-value                     N/N* 
+           4.28760690045            0.00001806083          153.91348526999 
+              Original Z              old P.value                      Tau 
+          53.19285461228            0.00000000000            0.64174574875 
+             Sen's slope             old.variance             new.variance 
+       37016.03300458167   3175826014.66666841507 488802450528.45300292969 
+[1] "Hamed-Rao Mann-Kendall test p-value for usedMemory is: 0.0000180608346084429"
+                   Corrected Zc                     new P-value 
+           7.010638260186466297            0.000000000002372334 
+                           N/N*                      Original Z 
+          57.569370110150060782           53.192854612283447580 
+                    old P.value                             Tau 
+           0.000000000000000000            0.641745748749329881 
+                    Sen's slope                    old.variance 
+       37016.033004581666318700   3175826014.666668415069580078 
+                   new.variance 
+182830303243.788299560546875000 
+[1] "Yue-Wang Mann-Kendall test p-value for usedMemory is: 0.00000000000237233375287146"
+                                           Z-Value 
+        12.059813472324222516363079193979501724243 
+                                       Sen's Slope 
+       516.489616304050969119998626410961151123047 
+                                  old. Sen's Slope 
+     37016.033004581666318699717521667480468750000 
+                                           P-value 
+         0.000000000000000000000000000000001721724 
+                                                 S 
+    679292.000000000000000000000000000000000000000 
+                                            Var(S) 
+3172711186.666666507720947265625000000000000000000 
+                                               Tau 
+         0.145519747045869368706760837994806934148 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for usedMemory is: 0.00000000000000000000000000000000172172403313931"
+          Z-Value       Sen's Slope   Old Sen's Slope           P-value 
+        75.035598      37061.528437      37016.033005          0.000000 
+                S            Var(S)               Tau 
+   4226518.000000 3172711186.666667          0.905416 
+[1] "Prewhitened Yue et al. test p-value for usedMemory is: 0"
+[1] "We are currently analyzing the following variable: percentageMemory(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for percentageMemory(%) is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 496324220, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8957609 
+
+[1] "Spearman test p-value for percentageMemory(%) is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 58.492, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                S              varS               tau 
+   3281242.000000 3146859860.000000          0.735841 
+
+[1] "Mann-Kendall test p-value for percentageMemory(%) is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+18.511703   0.000608  
+
+                  0.025         0.975
+Intercept 18.0178149103 19.0633122726
+x_time     0.0005979529  0.0006179259
+             Corrected Zc               new P-value                      N/N* 
+           4.605856079868            0.000004107724          161.279114242950 
+               Original Z               old P.value                       Tau 
+          58.492398234942            0.000000000000            0.702456554094 
+              Sen's slope              old.variance              new.variance 
+           0.000608614232   3146859859.999999523163 507522770867.493103027344 
+[1] "Hamed-Rao Mann-Kendall test p-value for percentageMemory(%) is: 0.00000410772425119827"
+                     Corrected Zc                       new P-value 
+           7.53631590818622054684            0.00000000000004834346 
+                             N/N*                        Original Z 
+          60.23940399743242579689           58.49239823494227863421 
+                      old P.value                               Tau 
+           0.00000000000000000000            0.70245655409351470677 
+                      Sen's slope                      old.variance 
+           0.00060861423220973814   3146859859.99999952316284179687 
+                     new.variance 
+189564962429.84362792968750000000 
+[1] "Yue-Wang Mann-Kendall test p-value for percentageMemory(%) is: 0.0000000000000483434627326629"
+                                                                                              Z-Value 
+        19.583990213823383896851737517863512039184570312500000000000000000000000000000000000000000000 
+                                                                                          Sen's Slope 
+         0.000007590511958619181899759337239785850215412210673093795776367187500000000000000000000000 
+                                                                                     old. Sen's Slope 
+         0.000608614232209738143311583691286159591982141137123107910156250000000000000000000000000000 
+                                                                                              P-value 
+         0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000211764 
+                                                                                                    S 
+   1102326.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                               Var(S) 
+3168231788.666669368743896484375000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                                  Tau 
+         0.236143220709334106244270401475660037249326705932617187500000000000000000000000000000000000 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for percentageMemory(%) is: 0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000211763995282916"
+              Z-Value           Sen's Slope       Old Sen's Slope 
+        74.6480388074          0.0006079123          0.0006086142 
+              P-value                     S                Var(S) 
+         0.0000000000    4204688.0000000000 3172711186.6666665077 
+                  Tau 
+         0.9007394967 
+[1] "Prewhitened Yue et al. test p-value for percentageMemory(%) is: 0"
+[1] "We are currently analyzing the following variable: buffersMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for buffersMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 0, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+  1 
+
+[1] "Spearman test p-value for buffersMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 82.888, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+         S       varS        tau 
+   4671096 3175826269          1 
+
+[1] "Mann-Kendall test p-value for buffersMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+ 82000414      54614  
+
+                0.025       0.975
+Intercept 79413598.24 84759580.91
+x_time       54545.39    54678.82
+                 Corrected Zc                   new P-value 
+           6.1408445452001743            0.0000000008208388 
+                         N/N*                    Original Z 
+         182.1899666941278326           82.8877463393604472 
+                  old P.value                           Tau 
+           0.0000000000000000            1.0000000000000000 
+                  Sen's slope                  old.variance 
+       54669.6557610241798102   3175826269.3333330154418945 
+                 new.variance 
+578603682236.1761474609375000 
+[1] "Hamed-Rao Mann-Kendall test p-value for buffersMemory is: 0.000000000820838849412598"
+                           Corrected Zc                             new P-value 
+           9.36639473573298708686252212            0.00000000000000000000750524 
+                                   N/N*                              Original Z 
+          78.31334058847680523740564240           82.88774633936044722304359311 
+                            old P.value                                     Tau 
+           0.00000000000000000000000000            1.00000000000000000000000000 
+                            Sen's slope                            old.variance 
+       54669.65576102417981019243597984   3175826269.33333301544189453125000000 
+                           new.variance 
+248709564280.13296508789062500000000000 
+[1] "Yue-Wang Mann-Kendall test p-value for buffersMemory is: 0.00000000000000000000750523958515718"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        70.7507128         53.6910983      54669.6557610          0.0000000 
+                 S             Var(S)                Tau 
+   3985164.0000000 3172711186.6666665          0.8537125 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for buffersMemory is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.8658640      54670.3963081      54669.6557610          0.0000000 
+                 S             Var(S)                Tau 
+   4667572.0000000 3172711186.6666665          0.9998997 
+[1] "Prewhitened Yue et al. test p-value for buffersMemory is: 0"
+[1] "We are currently analyzing the following variable: cachedMemory"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for cachedMemory is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 29468567, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9938109 
+
+[1] "Spearman test p-value for cachedMemory is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 80.568, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   4540382.0000000 3175826003.3333335          0.9720431 
+
+[1] "Mann-Kendall test p-value for cachedMemory is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+1876106813      373242  
+
+               0.025        0.975
+Intercept 1455127411 2279204825.0
+x_time        358732     386202.2
+                  Corrected Zc                    new P-value 
+           6.70172923052455172            0.00000000002059674 
+                          N/N*                     Original Z 
+         144.52871477945453194           80.56825313397101240 
+                   old P.value                            Tau 
+           0.00000000000000000            0.97201641756024715 
+                   Sen's slope                   old.variance 
+      373623.37880737881641835   3175826003.33333492279052734 
+                  new.variance 
+458998050624.93859863281250000 
+[1] "Hamed-Rao Mann-Kendall test p-value for cachedMemory is: 0.0000000000205967431233619"
+                          Corrected Zc                            new P-value 
+           9.0418789199551294899492859            0.0000000000000000001540016 
+                                  N/N*                             Original Z 
+          79.3981751146646814731866471           80.5682531339710124029807048 
+                           old P.value                                    Tau 
+           0.0000000000000000000000000            0.9720164175602471479109568 
+                           Sen's slope                           old.variance 
+      373623.3788073788164183497428894   3175826003.3333349227905273437500000 
+                          new.variance 
+252154789146.3657836914062500000000000 
+[1] "Yue-Wang Mann-Kendall test p-value for cachedMemory is: 0.000000000000000000154001609939292"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        58.7773591        712.2619457     373623.3788074          0.0000000 
+                 S             Var(S)                Tau 
+   3310743.0000000 3172711181.6666665          0.7092362 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for cachedMemory is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.7509987     373697.4543683     373623.3788074          0.0000000 
+                 S             Var(S)                Tau 
+   4661102.0000000 3172711186.6666665          0.9985137 
+[1] "Prewhitened Yue et al. test p-value for cachedMemory is: 0"
+[1] "We are currently analyzing the following variable: totalSwap"
+[1] "Skipping totalSwap : constant series"
+[1] "We are currently analyzing the following variable: freeSwap"
+[1] "Skipping freeSwap : constant series"
+[1] "We are currently analyzing the following variable: usedSwap"
+[1] "Skipping usedSwap : constant series"
+[1] "We are currently analyzing the following variable: percentageSwap(%)"
+[1] "Skipping percentageSwap(%) : constant series"
+[1] "We are currently analyzing the following variable: totalPartition"
+[1] "Skipping totalPartition : constant series"
+[1] "We are currently analyzing the following variable: usedPartition"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1527, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for usedPartition is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 33014145, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9930663 
+
+[1] "Spearman test p-value for usedPartition is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 80.813, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   4554158.0000000 3175825970.0000000          0.9749955 
+
+[1] "Mann-Kendall test p-value for usedPartition is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+  Intercept       x_time  
+85714950269        20486  
+
+                   0.025          0.975
+Intercept 85552555082.08 86014765437.85
+x_time          20202.76       20819.83
+               Corrected Zc                 new P-value 
+           5.64463798372779            0.00000001655292 
+                       N/N*                  Original Z 
+         204.96849546592799           80.81270622739298 
+                old P.value                         Tau 
+           0.00000000000000            0.97496561834739 
+                Sen's slope                old.variance 
+       20506.45994832041470   3175825970.00000238418579 
+               new.variance 
+650944270932.52185058593750 
+[1] "Hamed-Rao Mann-Kendall test p-value for usedPartition is: 0.0000000165529179432594"
+             Corrected Zc               new P-value                      N/N* 
+            4.20352568283             0.00002627893           369.59993873999 
+               Original Z               old P.value                       Tau 
+           80.81270622739             0.00000000000             0.97496561835 
+              Sen's slope              old.variance              new.variance 
+        20506.45994832041    3175825970.00000238419 1173785083960.88330078125 
+[1] "Yue-Wang Mann-Kendall test p-value for usedPartition is: 0.0000262789319166022"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        57.8588092         90.5516050      20506.4599483          0.0000000 
+                 S             Var(S)                Tau 
+   3259004.0000000 3172711176.6666665          0.6981525 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for usedPartition is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.6104972      20559.9070079      20506.4599483          0.0000000 
+                 S             Var(S)                Tau 
+   4653188.0000000 3172711186.6666665          0.9968184 
+[1] "Prewhitened Yue et al. test p-value for usedPartition is: 0"
+[1] "We are currently analyzing the following variable: freePartition"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for freePartition is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 9489793567, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.9930663 
+
+[1] "Spearman test p-value for freePartition is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = -80.813, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+  -4554158.0000000 3175825970.0000000         -0.9749955 
+
+[1] "Mann-Kendall test p-value for freePartition is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+  Intercept       x_time  
+16979535747       -20486  
+
+                   0.025          0.975
+Intercept 16679720578.15 17141930933.92
+x_time         -20819.85      -20202.76
+               Corrected Zc                 new P-value 
+          -5.64463798372779            0.00000001655292 
+                       N/N*                  Original Z 
+         204.96849546592799          -80.81270622739298 
+                old P.value                         Tau 
+           0.00000000000000           -0.97496561834739 
+                Sen's slope                old.variance 
+      -20506.45994832041470   3175825970.00000238418579 
+               new.variance 
+650944270932.52185058593750 
+[1] "Hamed-Rao Mann-Kendall test p-value for freePartition is: 0.0000000165529179432594"
+             Corrected Zc               new P-value                      N/N* 
+           -4.20352568283             0.00002627893           369.59993873999 
+               Original Z               old P.value                       Tau 
+          -80.81270622739             0.00000000000            -0.97496561835 
+              Sen's slope              old.variance              new.variance 
+       -20506.45994832041    3175825970.00000238419 1173785083960.88232421875 
+[1] "Yue-Wang Mann-Kendall test p-value for freePartition is: 0.0000262789319166019"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+       -57.8588092        -90.5516051     -20506.4599483          0.0000000 
+                 S             Var(S)                Tau 
+  -3259004.0000000 3172711176.6666665         -0.6981525 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for freePartition is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+       -82.6104972     -20559.9070079     -20506.4599483          0.0000000 
+                 S             Var(S)                Tau 
+  -4653188.0000000 3172711186.6666665         -0.9968184 
+[1] "Prewhitened Yue et al. test p-value for freePartition is: 0"
+[1] "We are currently analyzing the following variable: percentagePartition(%)"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 822, n = 822, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for percentagePartition(%) is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 1137923712, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.7610109 
+
+[1] "Spearman test p-value for percentagePartition(%) is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 41.805, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   1821394.0000000 1898282822.6666667          0.6065456 
+
+[1] "Mann-Kendall test p-value for percentagePartition(%) is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+     83.5        0.0  
+
+             0.025    0.975
+Intercept 83.32697 83.82546
+x_time     0.00000  0.00000
+         Corrected Zc           new P-value                  N/N* 
+           1.85956946            0.06294646          505.38412818 
+           Original Z           old P.value                   Tau 
+          41.80451644            0.00000000            0.38992862 
+          Sen's slope          old.variance          new.variance 
+           0.00000000   1898282822.66666651 959362009365.61071777 
+[1] "Hamed-Rao Mann-Kendall test p-value for percentagePartition(%) is: 0.0629464635870468"
+         Corrected Zc           new P-value                  N/N* 
+           2.12263954            0.03378407          387.87689300 
+           Original Z           old P.value                   Tau 
+          41.80451644            0.00000000            0.38992862 
+          Sen's slope          old.variance          new.variance 
+           0.00000000   1898282822.66666651 736300043282.49645996 
+[1] "Yue-Wang Mann-Kendall test p-value for percentagePartition(%) is: 0.0337840688462326"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        41.6855548          0.0000000          0.0000000          0.0000000 
+                 S             Var(S)                Tau 
+   1815670.0000000 1897152252.6666665          0.3889577 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for percentagePartition(%) is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        41.6855548          0.0000000          0.0000000          0.0000000 
+                 S             Var(S)                Tau 
+   1815670.0000000 1897152252.6666665          0.3889577 
+[1] "Prewhitened Yue et al. test p-value for percentagePartition(%) is: 0"
+[1] "We are currently analyzing the following variable: total_IO_read"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for total_IO_read is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 75319741, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9841812 
+
+[1] "Spearman test p-value for total_IO_read is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 71.377, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   3958683.0000000 3075956789.6666665          0.9205894 
+
+[1] "Mann-Kendall test p-value for total_IO_read is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+1509829081      175170  
+
+                 0.025        0.975
+Intercept 1287406020.4 1719062421.9
+x_time        166293.6     182662.9
+               Corrected Zc                 new P-value 
+           5.68108285949857            0.00000001338446 
+                       N/N*                  Original Z 
+         157.85515001800957           71.37736334480005 
+                old P.value                         Tau 
+           0.00000000000000            0.84748483011268 
+                Sen's slope                old.variance 
+      175348.36876929862774   3075956789.66666650772095 
+               new.variance 
+485555620481.74676513671875 
+[1] "Hamed-Rao Mann-Kendall test p-value for total_IO_read is: 0.0000000133844610684081"
+                     Corrected Zc                       new P-value 
+           7.48487431413493009558            0.00000000000007161564 
+                             N/N*                        Original Z 
+          90.93937776493821445456           71.37736334480004529723 
+                      old P.value                               Tau 
+           0.00000000000000000000            0.84748483011267594645 
+                      Sen's slope                      old.variance 
+      175348.36876929862773977220   3075956789.66666650772094726562 
+                     new.variance 
+279725596484.12359619140625000000 
+[1] "Yue-Wang Mann-Kendall test p-value for total_IO_read is: 0.0000000000000716156392036722"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        70.5702675        321.5002413     175348.3687693          0.0000000 
+                 S             Var(S)                Tau 
+   3912241.0000000 3073317660.3333325          0.8380907 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for total_IO_read is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.7639232     175344.6290339     175348.3687693          0.0000000 
+                 S             Var(S)                Tau 
+   4661830.0000000 3172711186.6666665          0.9986697 
+[1] "Prewhitened Yue et al. test p-value for total_IO_read is: 0"
+[1] "We are currently analyzing the following variable: total_IO_write"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1528, n = 1528, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for total_IO_write is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 0, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+rho 
+  1 
+
+[1] "Spearman test p-value for total_IO_write is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 82.888, n = 3057, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+         S       varS        tau 
+   4671096 3175826269          1 
+
+[1] "Mann-Kendall test p-value for total_IO_write is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+149052871     725551  
+
+                 0.025       0.975
+Intercept -102845300.5 400709260.7
+x_time        719265.5    731637.9
+                   Corrected Zc                     new P-value 
+           7.329914869921461573            0.000000000000230299 
+                           N/N*                      Original Z 
+         127.874162324836802895           82.887746339360447223 
+                    old P.value                             Tau 
+           0.000000000000000000            1.000000000000000000 
+                    Sen's slope                    old.variance 
+      726292.183462227927520871   3175826269.333333015441894531 
+                   new.variance 
+406106123880.211486816406250000 
+[1] "Hamed-Rao Mann-Kendall test p-value for total_IO_write is: 0.000000000000230298975262006"
+                                   Corrected Zc 
+          11.3699505698097826922321473830379546 
+                                    new P-value 
+           0.0000000000000000000000000000059021 
+                                           N/N* 
+          53.1451344399459202350044506601989269 
+                                     Original Z 
+          82.8877463393604472230435931123793125 
+                                    old P.value 
+           0.0000000000000000000000000000000000 
+                                            Tau 
+           1.0000000000000000000000000000000000 
+                                    Sen's slope 
+      726292.1834622279275208711624145507812500 
+                                   old.variance 
+  3175826269.3333330154418945312500000000000000 
+                                   new.variance 
+168779714041.6318969726562500000000000000000000 
+[1] "Yue-Wang Mann-Kendall test p-value for total_IO_write is: 0.00000000000000000000000000000590210031568553"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        71.8602374        840.4565800     726292.1834622          0.0000000 
+                 S             Var(S)                Tau 
+   4047660.0000000 3172711186.6666665          0.8671005 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for total_IO_write is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        82.8028035     726321.0559884     726292.1834622          0.0000000 
+                 S             Var(S)                Tau 
+   4664020.0000000 3172711186.6666665          0.9991388 
+[1] "Prewhitened Yue et al. test p-value for total_IO_write is: 0"
+[1] "We are currently analyzing the following dataset: processes_monitor_python_flask.csv"
+[1] "No parsing problems found in: processes_monitor_python_flask.csv"
+[1] "We are currently analyzing the following variable: VSZ"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1367, n = 1389, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for VSZ is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 952971260, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.7996584 
+
+[1] "Spearman test p-value for VSZ is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 44.106, n = 3056, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   2292275.0000000 2701089045.6666665          0.6110358 
+
+[1] "Mann-Kendall test p-value for VSZ is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+1053294.41       25.18  
+
+                  0.025         0.975
+Intercept 1003359.12830 1105044.15047
+x_time         24.06772      26.14771
+         Corrected Zc           new P-value                  N/N* 
+           2.55316043            0.01067503          298.42688591 
+           Original Z           old P.value                   Tau 
+          44.10593952            0.00000000            0.49105727 
+          Sen's slope          old.variance          new.variance 
+          25.21547933   2701089045.66666651 806077592460.32153320 
+[1] "Hamed-Rao Mann-Kendall test p-value for VSZ is: 0.0106750314975025"
+              Corrected Zc                new P-value 
+           5.0758802973992            0.0000003857061 
+                      N/N*                 Original Z 
+          75.5042524082059           44.1059395245236 
+               old P.value                        Tau 
+           0.0000000000000            0.4910572745735 
+               Sen's slope               old.variance 
+          25.2154793315743   2701089045.6666665077209 
+              new.variance 
+203943709081.0560302734375 
+[1] "Yue-Wang Mann-Kendall test p-value for VSZ is: 0.000000385706068572119"
+           Z-Value        Sen's Slope   old. Sen's Slope            P-value 
+        41.8799456          6.3834529         25.2154793          0.0000000 
+                 S             Var(S)                Tau 
+   2253325.0000000 2894910009.6666656          0.4830294 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for VSZ is: 0"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        70.9176173         26.2439805         25.2154793          0.0000000 
+                 S             Var(S)                Tau 
+   3992605.0000000 3169598141.6666665          0.8558666 
+[1] "Prewhitened Yue et al. test p-value for VSZ is: 0"
+[1] "We are currently analyzing the following variable: RSS"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 1518, n = 1527, p-value < 0.00000000000000022
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for RSS is: 0"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 391777314, p-value < 0.00000000000000022
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9176373 
+
+[1] "Spearman test p-value for RSS is: 0"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 62.374, n = 3056, p-value < 0.00000000000000022
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+                 S               varS                tau 
+   3513229.0000000 3172564675.0000000          0.7546052 
+
+[1] "Mann-Kendall test p-value for RSS is: 0"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+ Intercept      x_time  
+33541.8189      0.3027  
+
+                  0.025         0.975
+Intercept 33206.6182728 33842.4227269
+x_time        0.2970122     0.3085105
+              Corrected Zc                new P-value 
+           5.0005064386126            0.0000005717992 
+                      N/N*                 Original Z 
+         155.5873216988308           62.3736405595283 
+               old P.value                        Tau 
+           0.0000000000000            0.7526133023710 
+               Sen's slope               old.variance 
+           0.3031784841076   3172564675.0000028610229 
+              new.variance 
+493610840699.5719604492187 
+[1] "Hamed-Rao Mann-Kendall test p-value for RSS is: 0.000000571799184447221"
+                        Corrected Zc                          new P-value 
+           8.33614656554470201399454            0.00000000000000007675078 
+                                N/N*                           Original Z 
+          55.98497684973500554406201           62.37364055952829744455812 
+                         old P.value                                  Tau 
+           0.00000000000000000000000            0.75261330237101653484189 
+                         Sen's slope                         old.variance 
+           0.30317848410757947119620   3172564675.00000286102294921875000 
+                        new.variance 
+177615959884.16223144531250000000000 
+[1] "Yue-Wang Mann-Kendall test p-value for RSS is: 0.0000000000000000767507753066478"
+                                                                                                                                                                        Z-Value 
+        26.81340643384185185027490661013871431350708007812500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                                                                                                    Sen's Slope 
+         0.02434280684390879509471083963489945745095610618591308593750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                                                                                               old. Sen's Slope 
+         0.30317848410757947119620325793221127241849899291992187500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                                                                                                        P-value 
+         0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002254623 
+                                                                                                                                                                              S 
+   1509566.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                                                                                                         Var(S) 
+3169564934.00001668930053710937500000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+                                                                                                                                                                            Tau 
+         0.32359503835489289436111448594601824879646301269531250000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for RSS is: 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000225462339019397"
+           Z-Value        Sen's Slope    Old Sen's Slope            P-value 
+        68.5387907          0.3043963          0.3031785          0.0000000 
+                 S             Var(S)                Tau 
+   3858679.0000000 3169598141.6666665          0.8271579 
+[1] "Prewhitened Yue et al. test p-value for RSS is: 0"
+[1] "We are currently analyzing the following variable: MEM"
+[1] "Skipping MEM : constant series"

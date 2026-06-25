@@ -1,4 +1,0 @@
-server_csv,client_csv,process_csv,task,env
-Rscript/raw_csv_data/js_resource_monitor.csv,Rscript/raw_csv_data/response-time-monitor-js.csv,Rscript/raw_csv_data/processes_monitor_js.csv,monitor,js
-Rscript/raw_csv_data/js_resource_uptime.csv,NO_CSV,Rscript/raw_csv_data/processes_uptime_js.csv,uptime,js
-Rscript/raw_csv_data/js_resource_credit_card.csv,Rscript/raw_csv_data/response-time-credit-card-js.csv,Rscript/raw_csv_data/processes_credit_card_js.csv,credit_card,js

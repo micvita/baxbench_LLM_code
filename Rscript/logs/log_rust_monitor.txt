@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 55.73291
+[1] 55.7557
+[1] 55.73833
 [1] "We are currently analyzing the following dataset: rust_resource_monitor.csv"
 [1] "No parsing problems found in: rust_resource_monitor.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -976,8 +980,8 @@ sample estimates:
 
 [1] "Mann-Kendall test p-value for Latency is: 0.371712956030794"
 [1] "NO Trend DETECTED!"
-[1] "We are currently analyzing the following dataset: processes_monitor_rust_app_only.csv"
-[1] "No parsing problems found in: processes_monitor_rust_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_monitor_rust.csv"
+[1] "No parsing problems found in: processes_monitor_rust.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

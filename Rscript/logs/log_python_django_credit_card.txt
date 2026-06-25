@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] 51
+[1] 51.02136
+[1] 51.00333
 [1] "We are currently analyzing the following dataset: python_resource_credit_card_python_django.csv"
 [1] "No parsing problems found in: python_resource_credit_card_python_django.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -1682,8 +1686,8 @@ x_time     0.0000  0.00000
                                 Tau 
          0.104326673461146476884487 
 [1] "Prewhitened Yue et al. test p-value for Latency is: 0.00000000000000000425957390005259"
-[1] "We are currently analyzing the following dataset: processes_credit_card_python_django_app_only.csv"
-[1] "No parsing problems found in: processes_credit_card_python_django_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_credit_card_python_django.csv"
+[1] "No parsing problems found in: processes_credit_card_python_django.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 
 	Cox Stuart test

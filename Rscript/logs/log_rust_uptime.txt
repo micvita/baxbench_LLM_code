@@ -1,3 +1,7 @@
+[1] "DEBUG client-server-proc duration times:"
+[1] NA
+[1] 58.67624
+[1] 58.64667
 [1] "We are currently analyzing the following dataset: rust_resource_uptime.csv"
 [1] "No parsing problems found in: rust_resource_uptime.csv"
 [1] "We are currently analyzing the following variable: totalCpuUsage(%)"
@@ -930,8 +934,8 @@ x_time       504171.3    515785.1
                  S             Var(S)                Tau 
    4663844.0000000 3172711186.6666665          0.9991011 
 [1] "Prewhitened Yue et al. test p-value for total_IO_write is: 0"
-[1] "We are currently analyzing the following dataset: processes_uptime_rust_app_only.csv"
-[1] "No parsing problems found in: processes_uptime_rust_app_only.csv"
+[1] "We are currently analyzing the following dataset: processes_uptime_rust.csv"
+[1] "No parsing problems found in: processes_uptime_rust.csv"
 [1] "We are currently analyzing the following variable: VSZ"
 [1] "Skipping VSZ : constant series"
 [1] "We are currently analyzing the following variable: RSS"
