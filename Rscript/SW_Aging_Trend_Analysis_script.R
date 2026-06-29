@@ -165,7 +165,9 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
     slope_lowerCI_95 = numeric(),
     sen_intercept = numeric(),
     intercept_upperCI_95 = numeric(),
-    intercept_lowerCI_95 = numeric()
+    intercept_lowerCI_95 = numeric(),
+
+    mean = numeric()
   )
 
   width  <- ncol(datain)
@@ -346,7 +348,9 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
         slope_lowerCI_95 = slope_lci,
         sen_intercept = intercept,
         intercept_upperCI_95 = intercept_uci,
-        intercept_lowerCI_95 = intercept_lci
+        intercept_lowerCI_95 = intercept_lci,
+
+        mean = mean(vut)
       )
 
     } else {
@@ -380,7 +384,9 @@ trend_analysis <- function(exclude_list = c(1), csv_path, task_name,
         slope_lowerCI_95 = NA_real_,
         sen_intercept = NA_real_,
         intercept_upperCI_95 = NA_real_,
-        intercept_lowerCI_95 = NA_real_
+        intercept_lowerCI_95 = NA_real_,
+
+        mean = mean(vut)
       )
 
       plot_fun(trend_sig = trend_sig, vut = vut, date = date,

@@ -1,3 +1,4 @@
 server_csv,client_csv,process_csv,task,env
 Rscript/raw_csv_data/python_resource_monitor_open.csv,Rscript/raw_csv_data/response-time-monitor-python-open.csv,Rscript/raw_csv_data/processes_monitor_python_open.csv,monitor,python_open
 Rscript/raw_csv_data/python_resource_uptime_open.csv,Rscript/raw_csv_data/response-time-uptime-python-open.csv,Rscript/raw_csv_data/processes_uptime_python_open.csv,uptime,python_open
+Rscript/raw_csv_data/python_resource_image_converter_open.csv,Rscript/raw_csv_data/response_time_image_converter_python_open.csv,Rscript/raw_csv_data/processes_image-converter_open.csv,image_converter,python_open

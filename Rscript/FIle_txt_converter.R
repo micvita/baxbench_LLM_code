@@ -27,19 +27,15 @@ get_cmd_from_env <- function(file_path) {
 
   if (str_detect(filename, "open")) {
     return(c(
-      "python(3)? .*api_server\\.py",
-      "python(3)? api_server\\.py",
-      "api_server\\.py",
-      "python(3)? -m uvicorn api\\.main:app.*",
-      "python(3)? .*uvicorn api\\.main:app.*",
-      "uvicorn api\\.main:app.*"
+      "/\\.venv/bin/python3? (app\\.py|-c from multiprocessing\\.spawn import spawn_main; spawn_main\\(tracker_fd=\\d+, pipe_handle=\\d+\\) --multiprocessing-fork)$"
     ))
   }
 
   if (str_detect(filename, "flask")) {
     return(c(
       "code_prompt1.py",
-      "COD_CREDIT_CARD1.py"
+      "COD_CREDIT_CARD1.py",
+      "python(3)? app\\.py"
     ))
   }
 
@@ -206,7 +202,7 @@ clean_all_txt_files_routine <- function(
 
 # MAIN
 
-basePath   <- file.path(getwd(), "Rscript/raw_txt_data/open")
+basePath   <- file.path(getwd(), "Rscript/raw_txt_data/flask")
 output_dir <- file.path(getwd(), "Rscript/raw_csv_data")
 
 cleaned_app_files <- clean_all_txt_files_routine(

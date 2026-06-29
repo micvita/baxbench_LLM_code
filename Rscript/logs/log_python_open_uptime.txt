@@ -1833,6 +1833,75 @@ x_time       0.05657895   0.06962025
 [1] "We are currently analyzing the following variable: VSZ"
 [1] "Skipping VSZ : constant series"
 [1] "We are currently analyzing the following variable: RSS"
-[1] "Skipping RSS : constant series"
+
+	Cox Stuart test
+
+data:  vut
+statistic = 2, n = 2, p-value = 0.5
+alternative hypothesis: non randomness
+
+[1] "Cox-Stuart test p-value for RSS is: 0.5"
+
+	Spearman's rank correlation rho
+
+data:  vut and as.numeric(date)
+S = 4546032259, p-value = 0.01433
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+0.04429522 
+
+[1] "Spearman test p-value for RSS is: 0.0143297851575703"
+
+	Mann-Kendall trend test
+
+data:  vut
+z = 2.4479, n = 3056, p-value = 0.01437
+alternative hypothesis: true S is not equal to 0
+sample estimates:
+               S             varS              tau 
+   6108.00000000 6224052.00000000       0.03617281 
+
+[1] "Mann-Kendall test p-value for RSS is: 0.0143696831529518"
+[1] "Trend DETECTED! Computing slope ..."
+
+Call:
+NULL
+
+Coefficients:
+Intercept     x_time  
+    60328          0  
+
+          0.025 0.975
+Intercept 60289 60366
+x_time        0     0
+      Corrected Zc        new P-value               N/N*         Original Z 
+       1.731342431        0.083390708        1.999017896        2.447886706 
+       old P.value                Tau        Sen's slope       old.variance 
+       0.014369683        0.001308472        0.000000000  6224052.000000000 
+      new.variance 
+12441991.336388292 
+[1] "Hamed-Rao Mann-Kendall test p-value for RSS is: 0.0833907078026561"
+     Corrected Zc       new P-value              N/N*        Original Z 
+      2.120539317       0.033960589       1.332569808       2.447886706 
+      old P.value               Tau       Sen's slope      old.variance 
+      0.014369683       0.001308472       0.000000000 6224052.000000000 
+     new.variance 
+8293983.778778148 
+[1] "Yue-Wang Mann-Kendall test p-value for RSS is: 0.0339605894781442"
+             Z-Value          Sen's Slope     old. Sen's Slope 
+      0.000000000000       0.000000000000       0.000000000000 
+             P-value                    S               Var(S) 
+      1.000000000000       1.000000000000 6219979.666666507721 
+                 Tau 
+      0.000000214363 
+[1] "Prewhitened von Storch Mann-Kendall test p-value for RSS is: 1"
+             Z-Value          Sen's Slope      Old Sen's Slope 
+      0.000000000000       0.000000000000       0.000000000000 
+             P-value                    S               Var(S) 
+      1.000000000000       1.000000000000 6219979.666666507721 
+                 Tau 
+      0.000000214363 
+[1] "Prewhitened Yue et al. test p-value for RSS is: 1"
 [1] "We are currently analyzing the following variable: MEM"
 [1] "Skipping MEM : constant series"
