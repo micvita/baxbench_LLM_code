@@ -1,5 +1,5 @@
 [1] "DEBUG client-server-proc duration times:"
-[1] 54.50858
+[1] NA
 [1] 54.52266
 [1] 54.53806
 [1] "We are currently analyzing the following dataset: python_resource_uptime_python_flask.csv"
@@ -896,72 +896,6 @@ x_time    362354831   362556843
                S           Var(S)              Tau 
    4668040.00000 3172711186.66667          1.00000 
 [1] "Prewhitened Yue et al. test p-value for total_IO_write is: 0"
-[1] "We are currently analyzing the following dataset: response-time-uptime-python-flask.csv"
-[1] "No parsing problems found in: response-time-uptime-python-flask.csv"
-[1] "We are currently analyzing the following variable: elapsed"
-
-	Cox Stuart test
-
-data:  vut
-statistic = 491, n = 1001, p-value = 0.5694
-alternative hypothesis: non randomness
-
-[1] "Cox-Stuart test p-value for elapsed is: 0.569428426862889"
-
-	Spearman's rank correlation rho
-
-data:  vut and as.numeric(date)
-S = 4876956727, p-value = 0.2625
-alternative hypothesis: true rho is not equal to 0
-sample estimates:
-        rho 
--0.02025847 
-
-[1] "Spearman test p-value for elapsed is: 0.262507726235806"
-
-	Mann-Kendall trend test
-
-data:  vut
-z = -1.1212, n = 3061, p-value = 0.2622
-alternative hypothesis: true S is not equal to 0
-sample estimates:
-                  S                varS                 tau 
-    -58962.00000000 2765419707.33333349         -0.01548246 
-
-[1] "Mann-Kendall test p-value for elapsed is: 0.26220139399429"
-[1] "NO Trend DETECTED!"
-[1] "We are currently analyzing the following variable: Latency"
-
-	Cox Stuart test
-
-data:  vut
-statistic = 489, n = 1005, p-value = 0.4121
-alternative hypothesis: non randomness
-
-[1] "Cox-Stuart test p-value for Latency is: 0.41214654542311"
-
-	Spearman's rank correlation rho
-
-data:  vut and as.numeric(date)
-S = 4884726436, p-value = 0.2261
-alternative hypothesis: true rho is not equal to 0
-sample estimates:
-        rho 
--0.02188389 
-
-[1] "Spearman test p-value for Latency is: 0.226123354463052"
-
-	Mann-Kendall trend test
-
-data:  vut
-z = -1.21, n = 3061, p-value = 0.2263
-alternative hypothesis: true S is not equal to 0
-sample estimates:
-                  S                varS                 tau 
-    -63662.00000000 2768122377.33333349         -0.01670417 
-
-[1] "Mann-Kendall test p-value for Latency is: 0.226283764834457"
-[1] "NO Trend DETECTED!"
 [1] "We are currently analyzing the following dataset: processes_uptime_python_flask.csv"
 [1] "No parsing problems found in: processes_uptime_python_flask.csv"
 [1] "We are currently analyzing the following variable: VSZ"

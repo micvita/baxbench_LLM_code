@@ -216,8 +216,8 @@ ggp <- ggplot(
   invisible(ggp)
 }
 
-open_path <- file.path(getwd(), "Rscript/raw_csv_data/processes_uptime_python_open.csv")
-ai_path <- file.path(getwd(), "Rscript/raw_csv_data/processes_uptime_python_fast_api.csv")
+open_path <- file.path(getwd(), "Rscript/raw_csv_data/processes_image-converter_open.csv")
+ai_path <- file.path(getwd(), "Rscript/raw_csv_data/processes_image_converter_python_flask.csv")
 
 open_server <- readr::read_csv(open_path, show_col_types = FALSE)
 ai_server <- readr::read_csv(ai_path, show_col_types = FALSE)
@@ -253,21 +253,21 @@ ai_x_time <- as.numeric(
 )
 
 comparison_fun(
-  vut_1 = open_server$RSS,
-  vut_2 = ai_server$RSS,
+  vut_1 = open_server$VSZ,
+  vut_2 = ai_server$VSZ,
   x_time_1 = open_x_time,
   x_time_2 = ai_x_time,
   datain_1 = open_server,
   datain_2 = ai_server,
   col_1 = which(
-    colnames(open_server) == "RSS"
+    colnames(open_server) == "VSZ"
   ),
   col_2 = which(
-    colnames(ai_server) == "RSS"
+    colnames(ai_server) == "VSZ"
   ),
-  label_1 = "Uptime FastAPI open-source",
-  label_2 = "Uptime FastAPI LLM-generated",
+  label_1 = "ImageConverter FastAPI open-source",
+  label_2 = "ImageConverter FastAPI LLM-generated",
   output_dir = "Rscript/comparison_plots",
   break_hours = 2,
-  task = "uptime_fast_api"
+  task = "image_converter_fast_api"
 )
