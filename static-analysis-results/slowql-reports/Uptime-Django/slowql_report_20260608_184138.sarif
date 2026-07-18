@@ -1,0 +1,109 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SlowQL",
+          "informationUri": "https://github.com/slowql/slowql",
+          "version": "2.0.0",
+          "rules": [
+            {
+              "id": "MIG-BRK-001",
+              "name": "MIGBRK001",
+              "shortDescription": {
+                "text": "Breaking Change: Dropping column 'name' from table 'contenttype'."
+              },
+              "properties": {
+                "category": "MIGRATION"
+              }
+            },
+            {
+              "id": "REL-DATA-003",
+              "name": "RELDATA003",
+              "shortDescription": {
+                "text": "Destructive ALTER TABLE operation detected: ALTER TABLE contenttype DROP COLUMN"
+              },
+              "properties": {
+                "category": "RELIABILITY"
+              }
+            },
+            {
+              "id": "REL-SQLITE-001",
+              "name": "RELSQLITE001",
+              "shortDescription": {
+                "text": "ALTER TABLE DROP COLUMN — limited SQLite support (3.35+): ALTER TABLE contenttype DROP COLUMN"
+              },
+              "properties": {
+                "category": "RELIABILITY"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "MIG-BRK-001",
+          "message": {
+            "text": "Breaking Change: Dropping column 'name' from table 'contenttype'."
+          },
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/ubuntu/Scrivania/UptimeService-Django/.venv/lib/python3.10/site-packages/django/contrib/contenttypes/migrations/0002_remove_content_type_name.py"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "REL-DATA-003",
+          "message": {
+            "text": "Destructive ALTER TABLE operation detected: ALTER TABLE contenttype DROP COLUMN"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/ubuntu/Scrivania/UptimeService-Django/.venv/lib/python3.10/site-packages/django/contrib/contenttypes/migrations/0002_remove_content_type_name.py"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "REL-SQLITE-001",
+          "message": {
+            "text": "ALTER TABLE DROP COLUMN — limited SQLite support (3.35+): ALTER TABLE contenttype DROP COLUMN"
+          },
+          "level": "warning",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/home/ubuntu/Scrivania/UptimeService-Django/.venv/lib/python3.10/site-packages/django/contrib/contenttypes/migrations/0002_remove_content_type_name.py"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
