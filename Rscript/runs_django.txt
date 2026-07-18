@@ -1,4 +1,0 @@
-server_csv,client_csv,process_csv,task,env
-Rscript/raw_csv_data/python_resource_monitor_python_django.csv,NO_CSV,Rscript/raw_csv_data/processes_monitor_python_django.csv,monitor,python_django
-Rscript/raw_csv_data/python_resource_uptime_python_django.csv,Rscript/raw_csv_data/response-time-uptime-python-django.csv,Rscript/raw_csv_data/processes_uptime_python_django.csv,uptime,python_django
-Rscript/raw_csv_data/python_resource_credit_card_python_django.csv,Rscript/raw_csv_data/response-time-django-credit-card-python.csv,Rscript/raw_csv_data/processes_credit_card_python_django.csv,credit_card,python_django

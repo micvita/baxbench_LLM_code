@@ -1,8 +1,9 @@
 library(readr)
 
-#' Script to run multiple Trend Analysis based on the runs.txt file.
+# Script to run multiple Trend Analysis based on the runs.txt file.
+# Change runs_all.txt to run other Trend anlysis task in batch. The file needs to be in the same format as runs_all.txt, with the same column names.
 
-runs_path <- file.path(getwd(), "Rscript", "runs_flask.txt")
+runs_path <- file.path(getwd(), "Rscript", "runs_all.txt")
 
 runs <- read_csv(
   runs_path,

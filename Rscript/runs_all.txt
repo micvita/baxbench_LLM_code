@@ -1,4 +1,5 @@
 server_csv,client_csv,process_csv,task,env
+server_csv,client_csv,process_csv,task,env
 Rscript/raw_csv_data/python_resource_monitor_python_aiohttp.csv,Rscript/raw_csv_data/response-time-monitor-python-aiohttp.csv,Rscript/raw_csv_data/processes_monitor_python_aiohttp.csv,monitor,python_aiohttp
 Rscript/raw_csv_data/python_resource_credit_card_python_aiohttp.csv,NO_CSV,Rscript/raw_csv_data/processes_credit_card_python_aiohttp.csv,credit_card,python_aiohttp
 Rscript/raw_csv_data/python_resource_monitor_python_django.csv,NO_CSV,Rscript/raw_csv_data/processes_monitor_python_django.csv,monitor,python_django
@@ -8,7 +9,7 @@ Rscript/raw_csv_data/python_resource_monitor_python_fast_api.csv,Rscript/raw_csv
 Rscript/raw_csv_data/python_resource_uptime_python_fast_api.csv,Rscript/raw_csv_data/response-time-uptime-python-fastapi.csv,Rscript/raw_csv_data/processes_uptime_python_fast_api.csv,uptime,python_fast_api
 Rscript/raw_csv_data/python_resource_credit_card_python_fast_api.csv,Rscript/raw_csv_data/response-time-credit-card-python-fastapi.csv,Rscript/raw_csv_data/processes_credit_card_python_fast_api.csv,credit_card,python_fast_api
 Rscript/raw_csv_data/python_resource_monitor_python_flask.csv,NO_CSV,Rscript/raw_csv_data/processes_monitor_python_flask.csv,monitor,python_flask
-Rscript/raw_csv_data/python_resource_uptime_python_flask.csv,Rscript/raw_csv_data/response-time-uptime-python-flask.csv,Rscript/raw_csv_data/processes_uptime_python_flask.csv,uptime,python_flask
+Rscript/raw_csv_data/python_resource_uptime_python_flask.csv,NO_CSV,Rscript/raw_csv_data/processes_uptime_python_flask.csv,uptime,python_flask
 Rscript/raw_csv_data/python_resource_credit_card_python_flask.csv,NO_CSV,Rscript/raw_csv_data/processes_credit_card_python_flask.csv,credit_card,python_flask
 Rscript/raw_csv_data/js_resource_monitor.csv,Rscript/raw_csv_data/response-time-monitor-js.csv,Rscript/raw_csv_data/processes_monitor_js.csv,monitor,js
 Rscript/raw_csv_data/js_resource_uptime.csv,NO_CSV,Rscript/raw_csv_data/processes_uptime_js.csv,uptime,js
@@ -16,3 +17,7 @@ Rscript/raw_csv_data/js_resource_credit_card.csv,Rscript/raw_csv_data/response-t
 Rscript/raw_csv_data/rust_resource_monitor.csv,Rscript/raw_csv_data/response-time-monitor-rust.csv,Rscript/raw_csv_data/processes_monitor_rust.csv,monitor,rust
 Rscript/raw_csv_data/rust_resource_uptime.csv,NO_CSV,Rscript/raw_csv_data/processes_uptime_rust.csv,uptime,rust
 Rscript/raw_csv_data/rust_resource_credit_card.csv,NO_CSV,Rscript/raw_csv_data/processes_credit_card_rust.csv,credit_card,rust
+Rscript/raw_csv_data/python_resource_image_converter_python_flask.csv,NO_CSV,Rscript/raw_csv_data/processes_image_converter_python_flask.csv,image_converter,python_flask
+Rscript/raw_csv_data/python_resource_monitor_open.csv,Rscript/raw_csv_data/response-time-monitor-python-open.csv,Rscript/raw_csv_data/processes_monitor_python_open.csv,monitor,python_open
+Rscript/raw_csv_data/python_resource_uptime_open.csv,Rscript/raw_csv_data/response-time-uptime-python-open.csv,Rscript/raw_csv_data/processes_uptime_python_open.csv,uptime,python_open
+Rscript/raw_csv_data/python_resource_image_converter_open.csv,Rscript/raw_csv_data/response_time_image_converter_python_open.csv,Rscript/raw_csv_data/processes_image-converter_open.csv,image_converter,python_open
